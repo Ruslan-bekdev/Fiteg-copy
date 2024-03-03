@@ -4,11 +4,12 @@ import marqueeConfig from "../../../configs/marquee";
 import products from "../../../configs/products";
 
 const CatalogContent = styled.section`
+  height: 120dvh;
   position: relative;
   z-index: 400;
 `;
 const Marquee = styled.div`
-  max-width: 100vw;
+  width: 100vw;
   position: absolute;
   top: 0;
   left: 50%;
@@ -20,20 +21,20 @@ const Marquee = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    animation: move 20s linear infinite;
+    animation: move 24s linear infinite;
   }
   h2{
     white-space: nowrap;
     width: 100%;
-    font-size: 4vw;
+    font-size: 42px;
     display: flex;
     align-items: center;
     img{
-      height: 5vw;
+      height: 56px;
       aspect-ratio: 1;
     }
     span{
-      margin-inline: 3vw;
+      margin-inline: 32px;
     }
   }
   
@@ -49,14 +50,15 @@ const Marquee = styled.div`
 const Products = styled.div`
   & > div {
     width: 100%;
-    height: 100dvh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
   .product {
-    width: 28vw;
+    width: 290px;
+    min-width: 15vw;
     height: 100%;
 
    &__content {
@@ -107,11 +109,11 @@ const Products = styled.div`
           display: flex;
           align-items: center;
           background-color: #0e0f19;
-          border-radius: 1.3vw;
+          border-radius: 16px;
           color: #fdfdfd;
           margin-inline: auto;
           position: relative;
-          transform: rotate(-9deg);
+          transform: rotate(-9deg) translateY(-30%);
           z-index: 1000;
 
           hr{
@@ -124,26 +126,24 @@ const Products = styled.div`
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
-            gap: .6vw;
             h3, span {
               line-height: 50%;
               font-weight: bold;
             }
             h3 {
-              font-size: 1.8vw;
+              font-size: 32px;
             }
             span {
-              font-size: 1vw;
+              font-size: 12px;
             }
           }
         }
 
         &>h3 {
           color: var(--color);
-          font-size: 2.4vw;
-          margin-top: 2vw;
+          font-size: 32px;
         }
      }
      
@@ -210,21 +210,23 @@ const Catalog = () => {
 
         if (windowPositionY > windowHeight * 2) return;
 
-        if (windowPositionY > 64 && windowPositionY < windowHeight * 2)
-            element.style.top = `${windowPositionY/2.2}px`;
+        element.style.top = `${windowPositionY/2.2}px`;
     };
     const handleScrollProductsAnim = () => {
         const windowHeight = window.innerHeight;
         const windowPositionY = window.scrollY;
         if (windowPositionY > windowHeight * 2) return;
 
-        const productElements = document.querySelectorAll('.product__content');
-        if(windowPositionY > windowHeight/1.3 && !animatedStatus)
+        const productElements = document.querySelectorAll('.product');
+        if(windowPositionY > windowHeight/1.2 && !animatedStatus)
             setAnimatedStatus(true);
 
         productElements.forEach((product, index) => {
-            product.style.transform = `translateY(-${windowPositionY /
-            products[index].positions.parallaxDivide}px)`;
+            if (products[index].positions.parallaxDivide) {
+                product.style.transform = `translateY(-${windowPositionY /
+                products[index].positions.parallaxDivide}dvh)`;
+                // для больших устройств 2 делитель
+            }
         });
     };
 
@@ -256,9 +258,10 @@ const Catalog = () => {
                     <div
                         className={`product__content ${animatedStatus ?'animated' :''}`}
                         style={{
-                            animationDelay: `${index/5}s`,
+                            animationDelay: `${index/4}s`,
                             '--color': product.color,
-                            '--top': `${product.positions.top_catalog}vw`,
+                            '--top': `${product.positions.top_catalog}dvh`,
+                            // для больших устройств 1.5 делитель
                             '--rotate': `${product.positions.rotate_catalog}deg`,
                         }}
                     >

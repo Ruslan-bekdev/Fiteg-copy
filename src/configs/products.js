@@ -68,8 +68,8 @@ const product_apple = {
     positions: {
         rotate_menu: -4,
         rotate_catalog: -8,
-        top_catalog: 30,
-        parallaxDivide: 4,
+        top_catalog: 90,
+        parallaxDivide: 8,
     }
 };
 const product_mango = {
@@ -124,8 +124,8 @@ const product_mango = {
     positions: {
         rotate_menu: -16,
         rotate_catalog: 12,
-        top_catalog: 20,
-        parallaxDivide: 100,
+        top_catalog: 15,
+        parallaxDivide: 0,
     }
 };
 const product_orange = {
@@ -180,8 +180,8 @@ const product_orange = {
     positions: {
         rotate_menu: -2,
         rotate_catalog: 4,
-        top_catalog: 36,
-        parallaxDivide:  2.5,
+        top_catalog: 140,
+        parallaxDivide: 5,
     }
 };
 

@@ -12,6 +12,7 @@ const LandingContent = styled.section`
   align-items: center;
   justify-content: center;
   transition: .5s ease-in-out;
+  overflow: hidden;
 `;
 const Back = styled.div`
   width: 101vw;
@@ -41,10 +42,14 @@ const Back = styled.div`
     }
 `;
 const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   z-index: 400;
 
   h2 {
-    font-size: 6vw;
+    font-size: 72px;
     text-align: left;
     display: flex;
     align-items: center;
@@ -54,18 +59,19 @@ const Title = styled.div`
     animation: titleMove .5s ease-in-out;
 
     b{
-      margin-right: 2vw;
+      margin-right: 16px;
     }
     img {
-      height: 5vw;
+      height: 72px;
+      object-fit: contain;
     }
     .startButton{
-      width: 5vw;
-      height: 5vw;
+      width: 56px;
+      aspect-ratio: 1;
       border-radius: 50%;
-      font-size: 2vw;
+      font-size: 50%;
       text-align: center;
-      line-height: 5vw;
+      line-height: 56px;
       cursor: pointer;
       &_passive{
         border: 1px solid #000;
@@ -73,7 +79,7 @@ const Title = styled.div`
       &_active{
         animation: spin 10s linear infinite;
         color: gold;
-        font-size: 5vw;
+        font-size: 100%;
       }
     }
   }

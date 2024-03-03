@@ -3,26 +3,26 @@ import styled from 'styled-components';
 
 const MenuBurger = styled.div`
   .burger{
-    width: 7vw;
+    width: 35px;
     aspect-ratio: 1;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
-    right: 3vw;
+    right: 4vw;
     top: 6vh;
     cursor: pointer;
     transition: .3s ease-in;
     z-index: 999;
     
     >div{
-      width: 3vw;
-      height: 2vw;
+      width: 35%;
+      height: 35%;
       
       >div{
         width: 100%;
-        height: .4vw;
+        height: 2px;
         border-radius: 8px;
       }
     }

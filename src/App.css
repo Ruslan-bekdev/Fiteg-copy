@@ -1,14 +1,19 @@
 .container {
     text-align: center;
-    width: 80vw;
+    max-width: 960px;
+    padding: 0 42px;
     margin-inline: auto;
+    box-sizing: border-box;
 }
 
 @media (min-width: 1700px) {
     .container {
-        text-align: center;
-        width: 80vw;
-        margin-inline: auto;
+        max-width: 1240px;
+    }
+}
+@media (min-width: 2080px) {
+    .container {
+        /*max-width: 1960px;*/
     }
 }
 

@@ -4,6 +4,9 @@ import products from "../../configs/products";
 import {NavLink} from "react-router-dom";
 
 const MenuContent = styled.div`
+  *{
+    color: #0e0f19;
+  }
   height: 100dvh;
   position: relative;
   top: 0;
@@ -14,21 +17,15 @@ const MenuContent = styled.div`
   box-sizing: border-box;
   overflow-y: hidden;
 
-  h2 > * {
-    font-size: 5vw;
-    color: #0e0f19;
-    text-decoration: none;
-  }
-
   .menu__header {
-    font-size: 2.5vw;
+    font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     span {
-      width: 16vw;
-      height: 6vw;
+      width: 120px;
+      aspect-ratio: 5/2;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -38,10 +35,13 @@ const MenuContent = styled.div`
       @media (hover: hover) {
         &:hover {
           background-color: #ffc857;
-          color: #0e0f19;
         }
       }
     }
+  }
+  .baseLink{
+    font-size: 48px;
+    text-decoration: none;
   }
 `;
 const Items = styled.div`
@@ -54,13 +54,13 @@ const Items = styled.div`
   box-sizing: border-box;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  padding-top: 5vw;
+  padding-top: 32px;
   
   .item{
     width: 100%;
-    min-height: 32vw;
+    height: 360px;
     background-color: #069c6b;
-    border-radius: 3vw;
+    border-radius: 48px;
     position: sticky;
     top: 0;
     display: flex;
@@ -68,13 +68,13 @@ const Items = styled.div`
     justify-content: center;
     cursor: pointer;
     b{
-      font-size: 2vw;
+      font-size: 24px;
       position: absolute;
-      top: 1vw;
-      left: 2vw;
+      top: 24px;
+      left: 32px;
     }
     img{
-      height: 120%;
+      height: 110%;
       object-fit: contain;
     }
     
@@ -101,7 +101,7 @@ const Items = styled.div`
 
 const Menu = ({menuActiveStatus}) => {
     const cardTopPosition = 0;
-    const cardMargin = 42;
+    const cardMargin = 16;
 
     const renderItems = () => {
         return products.map((product,index) =>
@@ -128,16 +128,14 @@ const Menu = ({menuActiveStatus}) => {
     return (
         <MenuContent>
             <div className='menu__header'>
-                <h3>лого</h3>
+                <h4>лого</h4>
                 <span>
                     <b>Язык</b>
                 </span>
             </div>
-            <h2>
-                <NavLink to='/'>
-                    Home
-                </NavLink>
-            </h2>
+            <NavLink to='/' className='baseLink'>
+                <h3>Домой</h3>
+            </NavLink>
             <Items className={menuActiveStatus ?'showed' :''}>
                 {
                     renderItems()

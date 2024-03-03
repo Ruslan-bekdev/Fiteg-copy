@@ -17,8 +17,9 @@ const Wrapper = styled.div`
   background-color: #fdfdfd;
   transition: width .2s ease-in-out;
   &.active{
-    width: 50vw;
-    border-radius: 3vw;
+    width: 720px;
+    max-width: 50vw;
+    border-radius: 48px;
     overflow-y: hidden;
   }
 
