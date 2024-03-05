@@ -14,7 +14,7 @@ const MenuBurger = styled.div`
     top: 6vh;
     cursor: pointer;
     transition: .3s ease-in;
-    z-index: 999;
+    z-index: 3;
     
     >div{
       width: 35%;

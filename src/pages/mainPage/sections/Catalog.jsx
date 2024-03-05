@@ -1,12 +1,11 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import styled from "styled-components";
-import marqueeConfig from "../../../configs/marquee";
+import marquee from "../../../configs/marquee";
 import products from "../../../configs/products";
 
 const CatalogContent = styled.section`
   height: 120dvh;
   position: relative;
-  z-index: 400;
 `;
 const Marquee = styled.div`
   width: 100vw;
@@ -16,12 +15,15 @@ const Marquee = styled.div`
   transform: translateX(-50%);
   overflow: hidden;
   
+  &.animated>div{
+    animation: move 24s linear infinite;
+  }
+  
   &>div{
     width: 200%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    animation: move 24s linear infinite;
   }
   h2{
     white-space: nowrap;
@@ -48,13 +50,11 @@ const Marquee = styled.div`
   }
 `;
 const Products = styled.div`
-  & > div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   .product {
     width: 290px;
@@ -114,7 +114,7 @@ const Products = styled.div`
           margin-inline: auto;
           position: relative;
           transform: rotate(-9deg) translateY(-30%);
-          z-index: 1000;
+          z-index: 10;
 
           hr{
             border: .1vw #fdfdfd solid;
@@ -166,7 +166,7 @@ const Products = styled.div`
            scale: 1;
          }
          img{
-           rotate: calc(var(--rotate) * 1.1);
+           rotate: calc(7deg);
          }
          .product__desc{
            opacity: 1;
@@ -200,6 +200,63 @@ const Products = styled.div`
   }
 `;
 
+const RenderProducts = ({animatedStatus}) => {
+    return(
+        <Products>
+            {
+                products.map((product, index) =>
+                    <div
+                        className='product'
+                        key={index}
+                    >
+                        <div
+                            className={`product__content ${animatedStatus ?'animated' :''}`}
+                            style={{
+                                animationDelay: `${index/4}s`,
+                                '--color': product.color,
+                                '--top': `${product.positions.top_catalog}dvh`,
+                                // для больших устройств 1.5 делитель
+                                '--rotate': `${product.positions.rotate_catalog}deg`,
+                            }}
+                        >
+                            <div className='back'/>
+                            <img
+                                src={product.photos.catalog} alt={product.name}
+                            />
+                            <div className='product__desc'>
+                                <div className='nutritionalInfo'>
+                                    <div className='nutritionalInfo__content'>
+                                        <h3>
+                                            {
+                                                product.nutritionalInformation.eggWhites
+                                            }
+                                        </h3>
+                                        <span>
+                                        egg whites
+                                    </span>
+                                    </div>
+                                    <hr/>
+                                    <div className='nutritionalInfo__content'>
+                                        <h3>
+                                            {
+                                                product.nutritionalInformation.protein
+                                            }
+                                        </h3>
+                                        <span>
+                                        protein
+                                    </span>
+                                    </div>
+                                </div>
+                                <h3>
+                                    {product.name}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>)
+            }
+        </Products>
+    )};
+
 const Catalog = () => {
     const [animatedStatus,setAnimatedStatus] = useState(false);
 
@@ -208,16 +265,17 @@ const Catalog = () => {
         const windowHeight = window.innerHeight;
         const windowPositionY = window.scrollY;
 
-        if (windowPositionY > windowHeight * 2) return;
+        if (windowPositionY > windowHeight * 2 || !element) return;
 
         element.style.top = `${windowPositionY/2.2}px`;
     };
     const handleScrollProductsAnim = () => {
+        const productElements = document.querySelectorAll('.product');
         const windowHeight = window.innerHeight;
         const windowPositionY = window.scrollY;
-        if (windowPositionY > windowHeight * 2) return;
 
-        const productElements = document.querySelectorAll('.product');
+        if (windowPositionY > windowHeight * 2 || !productElements) return;
+
         if(windowPositionY > windowHeight/1.2 && !animatedStatus)
             setAnimatedStatus(true);
 
@@ -238,7 +296,7 @@ const Catalog = () => {
     );
 
     const renderMarqueeContent = () => {
-        const content = marqueeConfig.map((item, index) =>
+        const content = marquee.map((item, index) =>
             <Fragment key={index}>
                 <img src={item.svg} alt=""/>
                 <span>{item.text}</span>
@@ -247,61 +305,14 @@ const Catalog = () => {
 
         return content;
     };
-    const renderProducts = () => {
-        return <div>
-            {
-                products.map((product, index) =>
-                <div
-                    className='product'
-                    key={index}
-                >
-                    <div
-                        className={`product__content ${animatedStatus ?'animated' :''}`}
-                        style={{
-                            animationDelay: `${index/4}s`,
-                            '--color': product.color,
-                            '--top': `${product.positions.top_catalog}dvh`,
-                            // для больших устройств 1.5 делитель
-                            '--rotate': `${product.positions.rotate_catalog}deg`,
-                        }}
-                    >
-                        <div className='back'/>
-                        <img
-                            src={product.photos.main} alt={product.name}
-                        />
-                        <div className='product__desc'>
-                            <div className='nutritionalInfo'>
-                                <div className='nutritionalInfo__content'>
-                                    <h3>
-                                        {
-                                            product.nutritionalInformation.eggWhites
-                                        }
-                                    </h3>
-                                    <span>
-                                        egg whites
-                                    </span>
-                                </div>
-                                <hr/>
-                                <div className='nutritionalInfo__content'>
-                                    <h3>
-                                        {
-                                            product.nutritionalInformation.protein
-                                        }
-                                    </h3>
-                                    <span>
-                                        protein
-                                    </span>
-                                </div>
-                            </div>
-                            <h3>
-                                {product.name}
-                            </h3>
-                        </div>
-                    </div>
-                </div>)
-            }
-        </div>
-    };
+
+    useEffect(()=>{
+        const marquee = document.querySelector('#marquee');
+
+        if (!marquee) return;
+
+        marquee.classList.add('animated');
+    },[]);
 
     return (
         <CatalogContent>
@@ -311,11 +322,10 @@ const Catalog = () => {
                     <h2>{renderMarqueeContent()}</h2>
                 </div>
             </Marquee>
-            <Products className='container'>
-                {
-                    renderProducts()
-                }
-            </Products>
+            <RenderProducts
+                animatedStatus={animatedStatus}
+                className='container'
+            />
         </CatalogContent>
     );
 };

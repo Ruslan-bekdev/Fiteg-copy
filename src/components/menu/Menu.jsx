@@ -24,8 +24,7 @@ const MenuContent = styled.div`
     justify-content: space-between;
 
     span {
-      width: 120px;
-      aspect-ratio: 5/2;
+      padding: 16px 48px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -110,7 +109,7 @@ const Menu = ({menuActiveStatus}) => {
                 style={{
                     backgroundColor: product.color,
                     top: `${cardTopPosition + cardMargin * index}px`,
-                    zIndex: 1000 * index,
+                    zIndex: 10 * index,
                     animationDelay: `${index * .1}s`,
                     '--offset': `${15 + index * 15}`,
                 }}

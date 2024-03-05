@@ -27,7 +27,7 @@ const Back = styled.div`
   
   &.back_active{
     animation: zoom 2s cubic-bezier(0.4, 0, 0.4, 1);
-    z-index: 100 !important;
+    z-index: 500;
     transition: .2s;
   }
   
@@ -46,7 +46,7 @@ const Title = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 400;
+  z-index: 600;
 
   h2 {
     font-size: 72px;
@@ -57,6 +57,17 @@ const Title = styled.div`
     color: #0e0f19;
     opacity: 0;
     animation: titleMove .5s ease-in-out;
+
+    @keyframes titleMove {
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
     b{
       margin-right: 16px;
@@ -81,6 +92,18 @@ const Title = styled.div`
         color: gold;
         font-size: 100%;
       }
+
+      @keyframes spin {
+        0%{
+          transform: rotate(0);
+        }
+        50%{
+          transform: rotate(180deg);
+        }
+        100%{
+          transform: rotate(360deg);
+        }
+      }
     }
   }
 
@@ -89,30 +112,29 @@ const Title = styled.div`
       color: #fff;
     }
   }
-
-  @keyframes spin {
-    0%{
-      transform: rotate(0);
-    }
-    50%{
-      transform: rotate(180deg);
-    }
-    100%{
-      transform: rotate(360deg);
-    }
-  }
-  
-  @keyframes titleMove {
-    0% {
-      opacity: 0;
-      transform: translateX(-50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
 `;
+
+const RenderAnimatedBack = ({bodyBackgroundIndex,isBackActive}) => {
+  return(
+      <div>
+          {
+              bodyBacks.map((item,index)=>
+                  <Back
+                      className={`${bodyBackgroundIndex === index
+                          ?'back_active'
+                          :'back_passive'}`
+                      }
+                      style={{
+                          backgroundImage: `url(${item})`,
+                          opacity: `${isBackActive ? 1 : 0}`
+                      }}
+                      key={index}
+                  />
+              )
+          }
+      </div>
+  )
+}
 
 const Landing = () => {
     const backAnimationSpeed = 2400;
@@ -182,12 +204,18 @@ const Landing = () => {
     },[title]);
     useEffect(()=>{
         const backs = document.querySelectorAll('.back_passive')
+
+        if (!backs) return;
+
         backs.forEach((back,index)=>{
             back.style.zIndex = 10 * index;
         });
 
         const titles = document.querySelectorAll('h2')
         const timing = .1;
+
+        if (!titles) return;
+
         titles.forEach((title,index)=>{
             title.style.animationDelay = `${index * timing}s`;
             setTimeout(()=>{title.style.opacity = '1'},index * timing * 1000)
@@ -198,17 +226,10 @@ const Landing = () => {
 
     return (
         <LandingContent>
-            <div>
-                {
-                    bodyBacks.map((item,index)=>
-                        <Back
-                            className={`${bodyBackgroundIndex === index ?'back_active' :'back_passive'}`}
-                            style={{backgroundImage: `url(${item})`, opacity: `${isBackActive ? 1 : 0}`}}
-                            key={index}
-                        />
-                    )
-                }
-            </div>
+            <RenderAnimatedBack
+                bodyBackgroundIndex={backAnimationSpeed}
+                isBackActive={isBackActive}
+            />
             <Title className={`container ${isBackActive ?'title_light' :''}`}>
                 <h2>
                     <b>Cage-Free Egg</b>

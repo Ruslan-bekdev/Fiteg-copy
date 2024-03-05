@@ -3,7 +3,7 @@ import crossed_soy from "../assets/marquee/crossed_soy.svg";
 import crossed_sugar from "../assets/marquee/crossed_sugar.svg";
 import crossed_gluten from "../assets/marquee/crossed_gluten.svg";
 
-const marqueeConfig = [
+const marquee = [
     {
         svg: crossed_milk,
         text: '0% milk, lactose',
@@ -22,4 +22,4 @@ const marqueeConfig = [
     },
 ];
 
-export default marqueeConfig;
+export default marquee;

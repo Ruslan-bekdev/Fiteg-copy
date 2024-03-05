@@ -1,16 +1,18 @@
-import main_apple from "../assets/products/apple/main/img.png";
+import main_apple from "../assets/products/apple/main.png";
 import gallery1_apple from "../assets/products/apple/gallery/1.jpg";
 import gallery2_apple from "../assets/products/apple/gallery/2.jpg";
 import gallery3_apple from "../assets/products/apple/gallery/3.jpg";
 import gallery4_apple from "../assets/products/apple/gallery/4.jpg";
 
-import main_mango from "../assets/products/mango/main/img.png";
+import main_mango from "../assets/products/mango/main.png";
+import catalog_mango from "../assets/products/mango/catalog.png";
 import gallery1_mango from "../assets/products/mango/gallery/1.jpg";
 import gallery2_mango from "../assets/products/mango/gallery/2.jpg";
 import gallery3_mango from "../assets/products/mango/gallery/3.jpg";
 import gallery4_mango from "../assets/products/mango/gallery/4.jpg";
 
-import main_orange from "../assets/products/orange/main/img.png";
+import main_orange from "../assets/products/orange/main.png";
+import catalog_orange from "../assets/products/orange/catalog.png";
 import gallery1_orange from "../assets/products/orange/gallery/1.jpg";
 import gallery2_orange from "../assets/products/orange/gallery/2.jpg";
 import gallery3_orange from "../assets/products/orange/gallery/3.jpg";
@@ -58,6 +60,7 @@ const product_apple = {
     ],
     photos: {
         main: main_apple,
+        catalog: main_apple,
         gallery: [
             gallery1_apple,
             gallery2_apple,
@@ -67,7 +70,7 @@ const product_apple = {
     },
     positions: {
         rotate_menu: -4,
-        rotate_catalog: -8,
+        rotate_catalog: -7,
         top_catalog: 90,
         parallaxDivide: 8,
     }
@@ -114,6 +117,7 @@ const product_mango = {
     ],
     photos: {
         main: main_mango,
+        catalog: catalog_mango,
         gallery: [
             gallery1_mango,
             gallery2_mango,
@@ -123,7 +127,7 @@ const product_mango = {
     },
     positions: {
         rotate_menu: -16,
-        rotate_catalog: 12,
+        rotate_catalog: 0,
         top_catalog: 15,
         parallaxDivide: 0,
     }
@@ -170,6 +174,7 @@ const product_orange = {
     ],
     photos: {
         main: main_orange,
+        catalog: catalog_orange,
         gallery: [
             gallery1_orange,
             gallery2_orange,
@@ -179,7 +184,7 @@ const product_orange = {
     },
     positions: {
         rotate_menu: -2,
-        rotate_catalog: 4,
+        rotate_catalog: 0,
         top_catalog: 140,
         parallaxDivide: 5,
     }

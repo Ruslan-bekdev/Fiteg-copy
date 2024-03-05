@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   width: 100vw;
   min-height: 100dvh;
   position: relative;
-  z-index: 888;
+  z-index: 1;
   background-color: #fdfdfd;
   transition: width .2s ease-in-out;
   &.active{
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 
   .content {
     position: relative;
-    z-index: 222;
+    z-index: 2;
   }
 `;
 const Overlay = styled.div`
@@ -53,12 +53,6 @@ const App = () => {
 
     return(
         <AppContent>
-            <Burger
-                menuActiveStatus={menuActiveStatus}
-                activateMenu={activateMenu}
-                deactivateMenu={deactivateMenu}
-            />
-            <Overlay className={menuActiveStatus ?'dark' :''} onClick={deactivateMenu}/>
             <Wrapper className={menuActiveStatus ?'active' :''}>
                 {menuActiveStatus
                     ?<Menu menuActiveStatus={menuActiveStatus}/>
@@ -69,6 +63,15 @@ const App = () => {
                     </div>
                 }
             </Wrapper>
+            <Burger
+                menuActiveStatus={menuActiveStatus}
+                activateMenu={activateMenu}
+                deactivateMenu={deactivateMenu}
+            />
+            <Overlay
+                className={menuActiveStatus ?'dark' :''}
+                onClick={deactivateMenu}
+            />
         </AppContent>
     );
 };

@@ -79,11 +79,11 @@ const Cards = styled.div`
   
   @media (max-width: 768px) {
     aspect-ratio: 1/2;
-    gap: 0;
+    gap: 1%;
 
     .card{
       width: 100%;
-      flex-grow: 1;
+      height: 25%;
     }
   }
 `;
@@ -95,7 +95,7 @@ const Highlights = () => {
         const windowPositionY = window.scrollY;
         const backPosition = -(windowPositionY - windowHeight * 2)/5;
 
-        if (windowPositionY > windowHeight * 3) return;
+        if (windowPositionY > windowHeight * 3 || !cards) return;
 
         cards.forEach((card)=>{
             card.style.backgroundPositionY = `${backPosition}px`;
