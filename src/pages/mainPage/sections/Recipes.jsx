@@ -46,7 +46,7 @@ const RecipesItems = styled.div`
       position: sticky;
       height: 700px;
       object-fit: contain;
-      border-radius: 48px;
+      border-radius: 2.5vw;
     }
   }
 `;
@@ -68,7 +68,7 @@ const Caption = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 3vw;
+    border-radius: 2.5vw;
     background-color: #f2f3f4;
     cursor: pointer;
     
@@ -123,7 +123,7 @@ const Modal = styled.div`
   padding: 5vw 5vw;
   z-index: 2000;
   transition: .2s ease-in-out;
-  border-radius: 3vw;
+  border-radius: 2.5vw;
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;

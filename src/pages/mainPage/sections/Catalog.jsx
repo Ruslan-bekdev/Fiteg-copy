@@ -109,7 +109,7 @@ const Products = styled.div`
           display: flex;
           align-items: center;
           background-color: #0e0f19;
-          border-radius: 16px;
+          border-radius: 2.5vw;
           color: #fdfdfd;
           margin-inline: auto;
           position: relative;
@@ -144,6 +144,7 @@ const Products = styled.div`
         &>h3 {
           color: var(--color);
           font-size: 32px;
+          text-align: center;
         }
      }
      

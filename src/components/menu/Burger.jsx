@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const MenuBurger = styled.div`
   .burger{
-    width: 35px;
+    width: 4%;
     aspect-ratio: 1;
     border-radius: 50%;
     display: flex;
@@ -22,7 +22,7 @@ const MenuBurger = styled.div`
       
       >div{
         width: 100%;
-        height: 2px;
+        height: 20%;
         border-radius: 8px;
       }
     }

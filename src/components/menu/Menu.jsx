@@ -28,7 +28,7 @@ const MenuContent = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 3vw;
+      border-radius: 2.5vw;
       background-color: #f2f3f4;
       cursor: pointer;
       @media (hover: hover) {
@@ -59,7 +59,7 @@ const Items = styled.div`
     width: 100%;
     height: 360px;
     background-color: #069c6b;
-    border-radius: 48px;
+    border-radius: 2.5vw;
     position: sticky;
     top: 0;
     display: flex;

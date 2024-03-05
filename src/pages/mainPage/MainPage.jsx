@@ -4,6 +4,7 @@ import Landing from "./sections/Landing";
 import Catalog from "./sections/Catalog";
 import Highlights from "./sections/Highlights";
 import Recipes from "./sections/Recipes";
+import About from "./sections/About";
 
 const Main = styled.main`
   display: flex;
@@ -19,6 +20,7 @@ const MainPage = () => {
             <Catalog/>
             <Highlights/>
             <Recipes/>
+            <About/>
         </Main>
     );
 };

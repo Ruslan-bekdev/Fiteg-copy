@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   &.active{
     width: 720px;
     max-width: 50vw;
-    border-radius: 48px;
+    border-radius: 2.5vw;
     overflow-y: hidden;
   }
 

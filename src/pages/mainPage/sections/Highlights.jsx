@@ -34,7 +34,7 @@ const Cards = styled.div`
     text-align: left;
     padding: 36px;
     box-sizing: border-box;
-    border-radius: 48px;
+    border-radius: 2.5vw;
     display: flex;
     flex-direction: column;
     justify-content: end;
