@@ -15,11 +15,7 @@ const Marquee = styled.div`
   transform: translateX(-50%);
   overflow: hidden;
   
-  &.animated>div{
-    animation: move 24s linear infinite;
-  }
-  
-  &>div{
+  #marquee_animated{
     width: 200%;
     display: flex;
     align-items: center;
@@ -28,24 +24,11 @@ const Marquee = styled.div`
   h2{
     white-space: nowrap;
     width: 100%;
-    font-size: 42px;
+    font-size: var(--dynamic-fontSize);
     display: flex;
     align-items: center;
     img{
-      height: 56px;
       aspect-ratio: 1;
-    }
-    span{
-      margin-inline: 32px;
-    }
-  }
-  
-  @keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
     }
   }
 `;
@@ -260,10 +243,21 @@ const RenderProducts = ({animatedStatus}) => {
 
 const Catalog = () => {
     const [animatedStatus,setAnimatedStatus] = useState(false);
+    const windowHeight = window.innerHeight;
+
+    const marqueeImgHeight = 5;
+    const marqueeSpanMargin = 2;
+    const marqueeArray = Object.entries(marquee);
+    const marqueeElementsCount = marqueeArray.length;
+    const marqueeSymbolsLenght = marqueeArray.reduce((textLength,item) =>
+        textLength + item[1].text.length
+    ,0);
+    const marqueeFontSize = (200-marqueeImgHeight)
+        /(marqueeSymbolsLenght + (marqueeSpanMargin+marqueeImgHeight)*marqueeElementsCount);
+    const marqueeAnimationSpeed = 4;
 
     const handleScrollMarqueeAnimation = () => {
-        const element = document.querySelector('#marquee');
-        const windowHeight = window.innerHeight;
+        const element = document.querySelector('.marquee');
         const windowPositionY = window.scrollY;
 
         if (windowPositionY > windowHeight * 2 || !element) return;
@@ -272,7 +266,6 @@ const Catalog = () => {
     };
     const handleScrollProductsAnim = () => {
         const productElements = document.querySelectorAll('.product');
-        const windowHeight = window.innerHeight;
         const windowPositionY = window.scrollY;
 
         if (windowPositionY > windowHeight * 2 || !productElements) return;
@@ -289,36 +282,57 @@ const Catalog = () => {
         });
     };
 
-
     window.addEventListener('scroll',() => {
             handleScrollMarqueeAnimation();
             handleScrollProductsAnim();
         }
     );
 
-    const renderMarqueeContent = () => {
-        const content = marquee.map((item, index) =>
+    const animateMarquee = () => {
+        const marquee = document.querySelector('#marquee_animated');
+        if (!marquee) return;
+
+        const keyframes = [
+            {transform: 'translateX(0)'},
+            {transform: 'translateX(-50%)'}
+        ];
+
+        const options = {
+            duration: marqueeAnimationSpeed*1000,
+            iterations: Infinity,
+            easing: 'linear'
+        };
+
+        marquee.animate(keyframes, options);
+    };
+
+    useEffect(() => {
+        animateMarquee();
+    }, []);
+
+
+    const renderMarqueeContent = () =>
+        marquee.map((item, index) =>
             <Fragment key={index}>
-                <img src={item.svg} alt=""/>
-                <span>{item.text}</span>
+                <img
+                    src={item.svg} alt=""
+                    style={{height: `${marqueeImgHeight}vw`}}
+                />
+                <span
+                    style={{marginInline: `${marqueeSpanMargin}vw`}}
+                >{item.text}</span>
             </Fragment>
         );
 
-        return content;
-    };
-
-    useEffect(()=>{
-        const marquee = document.querySelector('#marquee');
-
-        if (!marquee) return;
-
-        marquee.classList.add('animated');
-    },[]);
-
     return (
         <CatalogContent>
-            <Marquee id='marquee'>
-                <div>
+            <Marquee className='marquee'>
+                <div
+                    id='marquee_animated'
+                    style={{
+                        '--dynamic-fontSize': `${marqueeFontSize}vw`
+                    }}
+                >
                     <h2>{renderMarqueeContent()}</h2>
                     <h2>{renderMarqueeContent()}</h2>
                 </div>

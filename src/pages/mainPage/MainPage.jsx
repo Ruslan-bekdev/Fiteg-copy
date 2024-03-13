@@ -5,6 +5,8 @@ import Catalog from "./sections/Catalog";
 import Highlights from "./sections/Highlights";
 import Recipes from "./sections/Recipes";
 import About from "./sections/About";
+import Social from "./sections/Social";
+import Footer from "../../components/footer/Footer";
 
 const Main = styled.main`
   display: flex;
@@ -15,13 +17,17 @@ const Main = styled.main`
 
 const MainPage = () => {
     return (
-        <Main>
-            <Landing/>
-            <Catalog/>
-            <Highlights/>
-            <Recipes/>
-            <About/>
-        </Main>
+        <>
+            <Main>
+                <Landing/>
+                <Catalog/>
+                <Highlights/>
+                <Recipes/>
+                <About/>
+                <Social/>
+            </Main>
+            <Footer/>
+        </>
     );
 };
 

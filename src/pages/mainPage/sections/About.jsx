@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import poster from "../../../assets/about-us-video-poster.png";
+import poster from "../../../assets/aboutUs/video-poster.png";
 import {Link} from "react-router-dom";
 
 const AboutContent = styled.section`
@@ -10,6 +10,7 @@ const AboutContent = styled.section`
   padding: 64px;
   box-sizing: border-box;
   color: #fff;
+  z-index: 10;
   
   h2{
     width: 100%;
