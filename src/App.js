@@ -1,8 +1,8 @@
+import React, {useState,useEffect} from "react";
 import './App.css';
 import MainPage from "./pages/mainPage/MainPage";
 import styled from "styled-components";
 import Burger from "./components/menu/Burger";
-import React, {useState} from "react";
 import Menu from "./components/menu/Menu";
 import {Route, Routes} from "react-router-dom";
 
@@ -16,10 +16,11 @@ const Wrapper = styled.div`
   z-index: 1;
   background-color: #fdfdfd;
   transition: width .2s ease-in-out;
+  
   &.active{
     width: 720px;
-    max-width: 50vw;
-    border-radius: 2.5vw;
+    max-width: 70vw;
+    border-radius: 2vw;
     overflow-y: hidden;
   }
 
@@ -42,6 +43,9 @@ const Overlay = styled.div`
 `;
 
 const App = () => {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 740);
     const [menuActiveStatus, setMenuActiveStatus] = useState(false);
 
     const activateMenu = () => {
@@ -51,6 +55,13 @@ const App = () => {
         setMenuActiveStatus(false);
     };
 
+    const handleResize = () => {
+        setIsMobile(window.innerWidth <= 740);
+        setWindowWidth(window.innerWidth);
+        setWindowHeight(window.innerHeight);
+    };
+    window.addEventListener('resize', handleResize);
+
     return(
         <AppContent>
             <Wrapper className={menuActiveStatus ?'active' :''}>
@@ -58,7 +69,7 @@ const App = () => {
                     ?<Menu menuActiveStatus={menuActiveStatus}/>
                     :<div className='content'>
                         <Routes>
-                            <Route path='/' element={<MainPage/>}/>
+                            <Route path='/' element={<MainPage isMobile={isMobile} windowWidth={windowWidth} windowHeight={windowHeight}/>}/>
                         </Routes>
                     </div>
                 }

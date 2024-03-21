@@ -11,7 +11,11 @@ const TitleContent = styled.div`
   z-index: 600;
 
   h2 {
-    font-size: 72px;
+    &:nth-of-type(2){
+      display: flex;
+      flex-direction: column;
+    }
+    font-size: 3rem;
     text-align: left;
     display: flex;
     align-items: center;
@@ -32,19 +36,19 @@ const TitleContent = styled.div`
     }
 
     b{
-      margin-right: 16px;
+      margin-right: 1rem;
     }
     img {
-      height: 72px;
+      height: 3rem;
       object-fit: contain;
     }
     .startButton{
-      width: 56px;
+      width: 3.5rem;
       aspect-ratio: 1;
       border-radius: 50%;
       font-size: 50%;
       text-align: center;
-      line-height: 56px;
+      line-height: 3.5rem;
       cursor: pointer;
       &_passive{
         border: 1px solid #000;
@@ -72,6 +76,15 @@ const TitleContent = styled.div`
   &.title_light{
     h2{
       color: #fff;
+    }
+  }
+  
+  @media (max-width: 740px) {
+    h2{
+      &:last-child{
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 `;

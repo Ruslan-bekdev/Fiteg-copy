@@ -15,16 +15,16 @@ const Main = styled.main`
   align-items: center;
 `;
 
-const MainPage = () => {
+const MainPage = ({isMobile,windowWidth,windowHeight}) => {
     return (
         <>
             <Main>
-                <Landing/>
-                <Catalog/>
-                <Highlights/>
-                <Recipes/>
+                <Landing windowHeight={windowHeight}/>
+                <Catalog isMobile={isMobile} windowHeight={windowHeight}/>
+                <Highlights windowHeight={windowHeight}/>
+                <Recipes windowHeight={windowHeight}/>
                 <About/>
-                <Social/>
+                <Social windowWidth={windowWidth} windowHeight={windowHeight}/>
             </Main>
             <Footer/>
         </>

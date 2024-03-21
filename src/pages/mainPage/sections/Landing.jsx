@@ -1,6 +1,6 @@
 import React, {useState,useRef,useEffect} from 'react';
 import styled from "styled-components";
-import {bodyBacks,titleTexts} from "../../../configs/landingBackAndTitles";
+import config from "../../../configs/landingBackAndTitles";
 import Title from "../../../components/landing/Title";
 import BackAnimated from "../../../components/landing/BackAnimated";
 
@@ -15,35 +15,33 @@ const LandingContent = styled.section`
   overflow: hidden;
 `;
 
-const Landing = () => {
+const Landing = ({windowHeight}) => {
     const backAnimationSpeed = 2400;
     const titleAnimationSpeed = backAnimationSpeed/50;
 
-    const [title,setTitle] = useState(titleTexts.default);
+    const [title,setTitle] = useState(config.default);
     const [intervalId, setIntervalId] = useState(null);
     const [isBackActive, setIsBackActive] = useState(false);
-    const [bodyBackgroundIndex, setBodyBackgroundIndex] = useState(null);
+    const [titleAndBackIndex, setTitleAndBackIndex] = useState(null);
     const titleIntervalRef = useRef(null);
 
     const handleNextBodyBack = () => {
-        if (bodyBacks.length === 0) return;
-        setBodyBackgroundIndex(prevIndex => {
-            const newBackIndex = (prevIndex === null || prevIndex === bodyBacks.length - 1)
+        setTitleAndBackIndex(prevIndex => {
+            const newBackIndex = (prevIndex === null || prevIndex === config.variants.length - 1)
                 ? 0
                 : prevIndex + 1;
             return newBackIndex;
         });
-
     };
     const startTitleAnimation = () => {
-        setTitle(titleTexts.default);
+        setTitle(config.default);
         clearInterval(titleIntervalRef.current);
-        if (bodyBackgroundIndex === null) return;
+        if (titleAndBackIndex === null) return;
 
         setTitle('');
         titleIntervalRef.current = setInterval(() => {
             setTitle(prevTitle => {
-                const nextChar = titleTexts.variants[bodyBackgroundIndex][prevTitle.length];
+                const nextChar = config.variants[titleAndBackIndex].title[prevTitle.length];
                 return prevTitle + nextChar;
             });
         }, titleAnimationSpeed);
@@ -65,11 +63,10 @@ const Landing = () => {
             clearInterval(intervalId);
             clearInterval(titleIntervalRef.current)
             setIntervalId(null);
-            setTitle(titleTexts.default);
+            setTitle(config.default);
         }
     };
     const autoStopAnimation = () => {
-        const windowHeight = window.innerHeight;
         const windowPositionY = window.scrollY;
         if (windowPositionY > windowHeight)
             stopInterval();
@@ -77,9 +74,9 @@ const Landing = () => {
 
     useEffect(()=>{
         startTitleAnimation();
-    },[bodyBackgroundIndex]);
+    },[titleAndBackIndex]);
     useEffect(()=>{
-        if (title === titleTexts.variants[bodyBackgroundIndex]) {
+        if (title === config.variants[titleAndBackIndex || 0].title) {
             clearInterval(titleIntervalRef.current);
         }
     },[title]);
@@ -94,14 +91,14 @@ const Landing = () => {
             setTimeout(()=>{title.style.opacity = '1'},index * timing * 1000)
         });
     },[]);
-
     window.addEventListener('scroll',autoStopAnimation);
 
     return (
         <LandingContent>
             <BackAnimated
-                bodyBackgroundIndex={bodyBackgroundIndex}
+                titleAndBackIndex={titleAndBackIndex}
                 isBackActive={isBackActive}
+                config={config}
             />
             <Title
                 title={title}

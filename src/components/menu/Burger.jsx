@@ -10,8 +10,8 @@ const MenuBurger = styled.div`
     align-items: center;
     justify-content: center;
     position: fixed;
-    right: 4vw;
-    top: 6vh;
+    right: 6vw;
+    top: 4vh;
     cursor: pointer;
     transition: .3s ease-in;
     z-index: 3;
@@ -23,7 +23,7 @@ const MenuBurger = styled.div`
       >div{
         width: 100%;
         height: 20%;
-        border-radius: 8px;
+        border-radius: .5rem;
       }
     }
   }

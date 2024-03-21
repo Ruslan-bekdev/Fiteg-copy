@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import {bodyBacks} from "../../configs/landingBackAndTitles";
 
 const Back = styled.div`
   width: 101vw;
@@ -12,9 +11,11 @@ const Back = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  opacity: 0;
   
   &.back_active{
-    animation: zoom 2s cubic-bezier(0.4, 0, 0.4, 1);
+    animation: opacity .2s ,zoom 2s cubic-bezier(0.4, 0, 0.4, 1);
+    opacity: 1;
     z-index: 500 !important;
     transition: .2s;
   }
@@ -30,19 +31,19 @@ const Back = styled.div`
     }
 `;
 
-const BackAnimated = ({bodyBackgroundIndex,isBackActive}) => {
-    return(
+const BackAnimated = ({titleAndBackIndex,isBackActive,config}) => {
+    return !isBackActive ?'' :(
         <div>
             {
-                bodyBacks.map((item,index)=>
+                config.variants.map((item,index)=>
                     <Back
-                        className={`${isBackActive && bodyBackgroundIndex === index
+                        className={`${titleAndBackIndex === index
                             ?'back_active'
                             :'back_passive'}`
                         }
                         style={{
-                            backgroundImage: `url(${item})`,
-                            opacity: `${isBackActive ? 1 : 0}`,
+                            backgroundImage: `url(${item.back})`,
+                            opacity: (titleAndBackIndex === index || titleAndBackIndex-1 === index || (titleAndBackIndex-1 === -1 && index === config.variants.length-1)) ?'1' :0,
                             zIndex: index * 10 + 10,
                         }}
                         key={index}

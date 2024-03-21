@@ -1,21 +1,43 @@
-export const bodyBacks = [
-    'https://i.work.ua/article/579b.jpg',
-    'https://static.fotogora.ru/fotogora/wysiwyg/wp-content/uploads/2014/07/photo-new-tech.jpg',
-    'https://i.work.ua/article/579b.jpg',
-    'https://static.fotogora.ru/fotogora/wysiwyg/wp-content/uploads/2014/07/photo-new-tech.jpg',
-    'https://i.work.ua/article/579b.jpg',
-    'https://static.fotogora.ru/fotogora/wysiwyg/wp-content/uploads/2014/07/photo-new-tech.jpg',
-    'https://i.work.ua/article/579b.jpg',
-];
-export const titleTexts = {
+import back1 from '../assets/landing/back1.jpg';
+import back2 from '../assets/landing/back2.jpg';
+import back3 from '../assets/landing/back3.jpg';
+import back4 from '../assets/landing/back4.jpg';
+import back5 from '../assets/landing/back5.jpg';
+import back6 from '../assets/landing/back6.jpg';
+import back7 from '../assets/landing/back7.jpg';
+
+const titleAndBackConfig = {
     default: 'EVERYONE',
     variants: [
-        'vital seniors',
-        'active new moms',
-        'youthful spirits',
-        'health enthusiasts',
-        'endurance athletes',
-        'gym devotees',
-        'wellness advocates',
-    ]
+        {
+            title: 'vital seniors',
+            back: back1,
+        },
+        {
+            title: 'active new moms',
+            back: back2,
+        },
+        {
+            title: 'youthful spirits',
+            back: back3,
+        },
+        {
+            title: 'health enthusiasts',
+            back: back4,
+        },
+        {
+            title: 'endurance athletes',
+            back: back5,
+        },
+        {
+            title: 'gym devotees',
+            back: back6,
+        },
+        {
+            title: 'wellness advocates',
+            back: back7
+        },
+    ],
 };
+
+export default titleAndBackConfig;

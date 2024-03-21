@@ -1,22 +1,22 @@
 import React from 'react';
 import styled from "styled-components";
-import poster from "../../../assets/aboutUs/video-poster.png";
-import {Link} from "react-router-dom";
+import Video from "../../../components/about/Video";
 
 const AboutContent = styled.section`
   width: 100%;
   background-color: #0e0f19;
-  border-radius: 2.5vw;
-  padding: 64px;
+  border-radius: 2vw;
+  padding: 4rem;
   box-sizing: border-box;
   color: #fff;
   z-index: 10;
+  margin-bottom: -3%;
   
   h2{
     width: 100%;
     text-align: center;
-    font-size: 64px;
-    margin-bottom: 48px;
+    font-size: 4rem;
+    margin-bottom: 3rem;
   }
   
   .content{
@@ -24,83 +24,39 @@ const AboutContent = styled.section`
     display: flex;
     justify-content: space-between;
     gap: 5%;
+    
     .paragraphs{
       width: 40%;
       
-      p{
-        margin-bottom: 32px;
-        font-size: 42px;
-      }
-      
-      p:not(:first-child){
-        max-width: 75%;
-        margin-block: 16px 0;
-        font-size: 32px;
-      }
-    }
-  }
-`;
-
-const VideoPoster = styled.div`
-  height: fit-content;
-  flex-grow: 1;
-  position: sticky;
-  top: 64px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-
-  &::after{
-    content: '▼';
-    font-size: 124px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-75%) rotate(-90deg);
-    z-index: 100;
-    pointer-events: none;
-  }
-  
-  img {
-    width: 100%;
-    object-fit: contain;
-    border-radius: 2.5vw;
-    transition: .2s ease-in-out;
-
-    @media (hover: hover) {
-      &:hover{
-        scale: 1.02;
+      p {
+        &:first-child {
+          margin-block: 3rem;
+          font-size: 1.5rem;
+        }
+        &:not(:first-child) {
+          max-width: 75%;
+          margin-bottom: 1.5rem;
+          font-size: 1.2rem;
+        }
       }
     }
   }
-
-  .videoLink {
-    width: fit-content;
-    padding: 16px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 2.5vw;
-    background-color: #272730;
-    margin-top: 16px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: .2s ease-in-out;
-
-    b {
-      font-size: 24px;
-      display: inline-block;
-      position: relative;
-      color: #fff;
-      transition: .2s ease-in-out;
+    
+  @media (max-width: 740px) {
+    h2{
+      text-align: left;
     }
+    
+    .content {
 
-    @media (hover: hover) {
-      &:hover {
-        background-color: #ffc857;
-        b{
-          color: #0e0f19;
+      flex-direction: column;
+
+      .paragraphs {
+        width: 100%;
+        padding-bottom: 50%;
+
+        p {
+          margin-bottom: 2rem;
         }
       }
     }
@@ -114,18 +70,9 @@ const About = () => {
         <AboutContent>
             <h2>About us</h2>
             <div className='content'>
-                <VideoPoster>
-                    <img src={poster} alt=""/>
-                    <Link
-                        to={videoLink}
-                        target='_blank'
-                        className='videoLink'
-                    >
-                        <b>
-                            Watch video
-                        </b>
-                    </Link>
-                </VideoPoster>
+                <Video
+                    videoLink={videoLink}
+                />
                 <div className="paragraphs">
                     <p>
                         At APF, we blend over 60 years of poultry farming heritage with modern innovation, standing proudly as one of the top three poultry farms in the Baltics.
