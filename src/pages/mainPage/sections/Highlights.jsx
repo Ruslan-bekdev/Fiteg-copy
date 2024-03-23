@@ -4,8 +4,7 @@ import Cards from "../../../components/highlights/Cards";
 
 const HighlightsContent = styled.section`
   width: 100vw;
-  height: fit-content;
-  min-height: 100dvh;
+  min-height: auto;
 
   h2{
     font-size: 2.5rem;

@@ -13,6 +13,7 @@ const FooterContent = styled.footer`
   align-items: end;
   justify-content: space-between;
   box-sizing: border-box;
+  z-index: 9998;
   
   &>b, &>b *{
     color: #000;

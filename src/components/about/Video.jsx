@@ -72,7 +72,7 @@ const VideoContent = styled.div`
     left: 100%;
     
     img{
-      max-height: 40vh;
+      max-height: 40dvh;
     }
   }
 `;

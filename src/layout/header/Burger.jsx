@@ -2,16 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MenuBurger = styled.div`
+  width: 2rem;
+  aspect-ratio: 1;
+  position: relative;
+  pointer-events: auto;
+  
   .burger{
-    width: 4%;
+    width: 100%;
     aspect-ratio: 1;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: fixed;
-    right: 6vw;
-    top: 4vh;
+    position: absolute;
+    left: 0;
+    top: 0;
     cursor: pointer;
     transition: .3s ease-in;
     z-index: 3;
@@ -77,7 +82,6 @@ const MenuBurger = styled.div`
 `;
 
 const Burger = ({activateMenu,deactivateMenu,menuActiveStatus}) => {
-
     return (
         <MenuBurger>
             <div

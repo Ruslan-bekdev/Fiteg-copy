@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import products from "../../configs/products";
 import styled from "styled-components";
 
-const ProductsContentNew = styled.div`
+const ProductsContent = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
@@ -176,9 +176,11 @@ const ProductsContentNew = styled.div`
   &.mobile{
     display: flex;
     flex-direction: column;
+    gap: 5dvh;
+    padding-bottom: 12rem;
 
     .product {
-      width: 45%;
+      width: 75%;
       transform: none !important;
 
       &:not(:first-child){
@@ -204,7 +206,7 @@ const ProductsContentNew = styled.div`
         .product__desc {
           &>h3 {
             color: var(--color);
-            font-size: 1.8rem;
+            font-size: 3rem;
             text-align: center;
           }
         }
@@ -216,7 +218,7 @@ const ProductsContentNew = styled.div`
 const Products = ({animatedStatus,isMobile}) => {
 
     return(
-        <ProductsContentNew
+        <ProductsContent
             className={isMobile ?'mobile' :'desktop'}
         >
             {products.map((product, index) =>
@@ -267,7 +269,7 @@ const Products = ({animatedStatus,isMobile}) => {
                         </div>
                     </div>
                 </div>)}
-        </ProductsContentNew>
+        </ProductsContent>
     )};
 
 export default Products;

@@ -13,14 +13,14 @@ const ItemsContent = styled.div`
 
   .counter {
     height: 100%;
-    font-size: 4rem;
+    font-size: 2rem;
     position: sticky;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     input {
-      width: 5rem;
+      width: 2rem;
       
       &::-moz-range-track{
         background: #0e0f19;
@@ -34,7 +34,7 @@ const ItemsContent = styled.div`
   }
 
   .images {
-    gap: 4vh;
+    gap: 4dvh;
     display: flex;
     flex-direction: column;
 
@@ -44,7 +44,7 @@ const ItemsContent = styled.div`
       object-fit: cover;
       border-radius: 1rem;
       @media (max-width: 740px){
-        height: 30vh;
+        height: 30dvh;
       }
     }
   }
@@ -55,10 +55,10 @@ const Caption = styled.div`
   text-align: left;
   
   h3 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   p {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-block: .5rem;
   }
   span {
@@ -72,7 +72,7 @@ const Caption = styled.div`
     cursor: pointer;
     
     b {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       padding-right: 1rem;
       display: inline-block;
       position: relative;
@@ -91,6 +91,20 @@ const Caption = styled.div`
       &:hover {
         background-color: #ffc857;
       }
+    }
+  }
+  
+  @media (max-width: 740px) {
+
+    h3 {
+      font-size: 3rem;
+    }
+    p {
+      font-size: 1.5rem;
+      margin-block: .5rem;
+    }
+    span b{
+      font-size: 1.5rem;
     }
   }
 `;

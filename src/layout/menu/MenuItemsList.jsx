@@ -13,7 +13,7 @@ const Items = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding-top: 1rem;
-  gap: 7vh;
+  gap: 7dvh;
   
   .item{
     width: 100%;

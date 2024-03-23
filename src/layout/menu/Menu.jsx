@@ -17,10 +17,11 @@ const MenuContent = styled.div`
   overflow-y: hidden;
 
   .menu__header {
+    height: 10vh;
     font-size: 1.4rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
 
     span {
       padding: .6rem 1.8rem;
@@ -43,10 +44,11 @@ const Menu = ({menuActiveStatus}) => {
 
     const updatePadding = () => {
         const itemsList = document.querySelector('.showed');
-        const itemsListHeight = itemsList.clientHeight;
         const itemHeight = document.querySelector('.item').clientHeight;
 
         if (!itemsList) return;
+
+        const itemsListHeight = itemsList.clientHeight;
 
         itemsList.style.paddingBottom = `calc(${itemsListHeight - itemHeight}px - var(--rem)`;
     };
@@ -59,7 +61,6 @@ const Menu = ({menuActiveStatus}) => {
     return (
         <MenuContent>
             <div className='menu__header'>
-                <h4>лого</h4>
                 <span>
                     <b>Язык</b>
                 </span>

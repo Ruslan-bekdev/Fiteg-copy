@@ -4,7 +4,6 @@ import spongeTexture from "../../../assets/social/spongeTexture.png";
 import instagram from "../../../assets/social/instagram.svg";
 
 const SocialContent = styled.section`
-  min-height: 100vh !important;
   width: 100vw;
   background-color: #fdc757;
   position: relative;
@@ -29,6 +28,8 @@ const SocialContent = styled.section`
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity .3s ease-in-out;
     }
 
     .svg_text {
@@ -39,9 +40,18 @@ const SocialContent = styled.section`
       animation: 40s svgRotation infinite linear;
       pointer-events: none;
       opacity: 0;
-      transition: opacity .2s ease-in-out;
-      
-      &.showed {
+      transition: opacity .3s ease-in-out;
+      transition-delay: .3s;
+    }
+    
+    &.showed {
+      img{
+        opacity: 1;
+      }
+      .svg_text{
+        opacity: 1;
+      }
+      .smile{
         opacity: 1;
       }
     }
@@ -56,7 +66,7 @@ const SocialContent = styled.section`
     }
   }
   
-  @media (max-width: 740px) {
+  @media (max-width: 740px) and (min-height: 740px){
     min-height: calc(60 * var(--rem));
   }
   @media (min-width: 740px) and (max-width: 1230px){
@@ -74,7 +84,8 @@ const Smile = styled.div`
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  transition: .2s ease-in-out;
+  transition: .3s ease-in-out;
+  transition-delay: .1s;
 
   @media (hover: hover) {
     .item:hover &{
@@ -87,6 +98,8 @@ const Smile = styled.div`
     height: 12%;
     position: relative;
     transform: rotate(20deg) scale(3);
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
 
     &__main {
       width: 100%;
@@ -133,12 +146,12 @@ const Social = ({windowWidth, windowHeight}) => {
 
     const handleScrollItemAnim = () => {
         const bodyHeight = document.body.clientHeight
-        const item = document.querySelector('.svg_text');
+        const item = document.querySelector('.item');
         const windowPositionY = window.scrollY;
 
         if (!item) return;
 
-        if (windowPositionY < bodyHeight-windowHeight*1.5) {
+        if (windowPositionY < bodyHeight-windowHeight*1.3) {
             return item.classList.remove('showed');
         }
 
@@ -156,8 +169,8 @@ const Social = ({windowWidth, windowHeight}) => {
                 className="item"
                 style={{
                     backgroundImage: `url(${spongeTexture})`,
-                    width: `45${isWindowHorizontal ?'vw' :'vh'}`,
-                    maxWidth: `45${isWindowHorizontal ?'vh' :'vw'}`
+                    width: `45${isWindowHorizontal ?'vw' :'dvh'}`,
+                    maxWidth: `45${isWindowHorizontal ?'dvh' :'vw'}`
                 }}
                 onClick={()=>alert('Имитация ссылки на Инстаграм')}
             >
@@ -170,16 +183,16 @@ const Social = ({windowWidth, windowHeight}) => {
                         <div className='smile__main'>
                             <div
                                 style={{
-                                    border: `.2${isWindowHorizontal ?'vh' :'vw'} #000 solid`,
+                                    border: `.2${isWindowHorizontal ?'dvh' :'vw'} #000 solid`,
                                 }}
                             />
                         </div>
                         <div
-                            style={{width: `1${isWindowHorizontal ?'vh' :'vw'}`}}
+                            style={{width: `1${isWindowHorizontal ?'dvh' :'vw'}`}}
                             className='smile__side_left'
                         />
                         <div
-                            style={{width: `1${isWindowHorizontal ?'vh' :'vw'}`}}
+                            style={{width: `1${isWindowHorizontal ?'dvh' :'vw'}`}}
                             className='smile__side_right'
                         />
                     </div>
@@ -187,10 +200,10 @@ const Social = ({windowWidth, windowHeight}) => {
 
                 <svg
                     style={{
-                        width: `68${isWindowHorizontal ?'vw' :'vh'}`,
-                        height: `68${isWindowHorizontal ?'vh' :'vw'}`,
-                        maxWidth: `100${isWindowHorizontal ?'vh' :'vw'}`,
-                        maxHeight: `100${isWindowHorizontal ?'vw' :'vh'}`
+                        width: `68${isWindowHorizontal ?'vw' :'dvh'}`,
+                        height: `68${isWindowHorizontal ?'dvh' :'vw'}`,
+                        maxWidth: `100${isWindowHorizontal ?'dvh' :'vw'}`,
+                        maxHeight: `100${isWindowHorizontal ?'vw' :'dvh'}`
                     }}
                     className='svg_text'
                     viewBox="0 0 100 100"

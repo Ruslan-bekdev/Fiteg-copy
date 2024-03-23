@@ -2,12 +2,15 @@ import React, {useState,useEffect} from "react";
 import './App.css';
 import MainPage from "./pages/mainPage/MainPage";
 import styled from "styled-components";
-import Burger from "./components/menu/Burger";
-import Menu from "./components/menu/Menu";
+import Burger from "./layout/header/Burger";
+import Menu from "./layout/menu/Menu";
 import {Route, Routes} from "react-router-dom";
+import Logo from "./layout/header/Logo";
+import Header from "./layout/header/Header";
+import Footer from "./layout/footer/Footer";
 
 const AppContent = styled.div`
-    
+    position: relative;
 `;
 const Wrapper = styled.div`
   width: 100vw;
@@ -69,16 +72,24 @@ const App = () => {
                     ?<Menu menuActiveStatus={menuActiveStatus}/>
                     :<div className='content'>
                         <Routes>
-                            <Route path='/' element={<MainPage isMobile={isMobile} windowWidth={windowWidth} windowHeight={windowHeight}/>}/>
+                            <Route path='/' element={
+                                <MainPage
+                                    isMobile={isMobile}
+                                    windowWidth={windowWidth}
+                                    windowHeight={windowHeight}
+                                />
+                            }/>
                         </Routes>
                     </div>
                 }
             </Wrapper>
-            <Burger
+            <Header
                 menuActiveStatus={menuActiveStatus}
                 activateMenu={activateMenu}
                 deactivateMenu={deactivateMenu}
+                windowHeight={windowHeight}
             />
+            <Footer/>
             <Overlay
                 className={menuActiveStatus ?'dark' :''}
                 onClick={deactivateMenu}

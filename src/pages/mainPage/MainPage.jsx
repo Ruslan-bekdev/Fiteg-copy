@@ -6,7 +6,7 @@ import Highlights from "./sections/Highlights";
 import Recipes from "./sections/Recipes";
 import About from "./sections/About";
 import Social from "./sections/Social";
-import Footer from "../../components/footer/Footer";
+import Footer from "../../layout/footer/Footer";
 
 const Main = styled.main`
   display: flex;
@@ -26,7 +26,6 @@ const MainPage = ({isMobile,windowWidth,windowHeight}) => {
                 <About/>
                 <Social windowWidth={windowWidth} windowHeight={windowHeight}/>
             </Main>
-            <Footer/>
         </>
     );
 };
