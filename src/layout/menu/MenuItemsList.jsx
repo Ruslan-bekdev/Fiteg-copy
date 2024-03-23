@@ -27,6 +27,7 @@ const Items = styled.div`
     align-items: end;
     justify-content: center;
     cursor: pointer;
+    
     b{
       font-size: 1rem;
       position: absolute;
@@ -48,10 +49,10 @@ const Items = styled.div`
 
   @keyframes move {
     0% {
-      transform: translateY(calc(var(--offset) * -.8px));
+      transform: translateY(0);
     }
     50% {
-      transform: translateY(calc(var(--offset) * 1.6px));
+      transform: translateY(calc(var(--offset) * 1.4px));
     }
     100% {
       transform: translateY(0);

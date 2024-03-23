@@ -143,19 +143,20 @@ const Smile = styled.div`
 
 const Social = ({windowWidth, windowHeight}) => {
     const [isWindowHorizontal,setIsWindowHorizontal] = useState(windowWidth > windowHeight);
+    const [itemAnimStatus,setItemAnimStatus] = useState(false);
 
     const handleScrollItemAnim = () => {
-        const bodyHeight = document.body.clientHeight
+        const bodyHeight = document.body.clientHeight;
         const item = document.querySelector('.item');
         const windowPositionY = window.scrollY;
 
         if (!item) return;
 
         if (windowPositionY < bodyHeight-windowHeight*1.3) {
-            return item.classList.remove('showed');
+            return setItemAnimStatus(false);
         }
 
-        item.classList.add('showed');
+        setItemAnimStatus(true);
     };
     window.addEventListener('scroll',handleScrollItemAnim);
 
@@ -166,7 +167,7 @@ const Social = ({windowWidth, windowHeight}) => {
     return (
         <SocialContent>
             <div
-                className="item"
+                className={`item ${itemAnimStatus ?'showed' :''}`}
                 style={{
                     backgroundImage: `url(${spongeTexture})`,
                     width: `45${isWindowHorizontal ?'vw' :'dvh'}`,

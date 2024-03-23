@@ -4,6 +4,7 @@ import Video from "../../../components/about/Video";
 
 const AboutContent = styled.section`
   width: 100%;
+  min-height: auto;
   background-color: #0e0f19;
   border-radius: 2vw;
   padding: 4rem;
@@ -48,12 +49,10 @@ const AboutContent = styled.section`
     }
     
     .content {
-
       flex-direction: column;
 
       .paragraphs {
         width: 100%;
-        padding-bottom: 50%;
 
         p {
           margin-bottom: 2rem;

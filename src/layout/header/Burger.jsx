@@ -7,7 +7,7 @@ const MenuBurger = styled.div`
   position: relative;
   pointer-events: auto;
   
-  .burger{
+  .burger {
     width: 100%;
     aspect-ratio: 1;
     border-radius: 50%;
@@ -17,61 +17,63 @@ const MenuBurger = styled.div`
     position: absolute;
     left: 0;
     top: 0;
+    background-color: #0e0f19;
     cursor: pointer;
     transition: .3s ease-in;
     z-index: 3;
-    
-    >div{
+
+    > div {
       width: 35%;
       height: 35%;
-      
-      >div{
+
+      > div {
         width: 100%;
         height: 20%;
         border-radius: .5rem;
-      }
-    }
-  }
-  
-  .burger_default{
-    background-color: #0e0f19;
-    >div{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      >div{
         background-color: #fff;
       }
     }
-    &.hidden{
-      transform: rotate(180deg);
+
+    &_light {
+      filter: invert(1);
     }
-  }
-  .burger_light{
-    background-color: #fff;
-    &>div>div{
-      background-color: #0e0f19;
-    }
-  }
-  .burger_active{
-    >div{
-      position: relative;
-      >div{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%);
-        &:first-child {
-          transform: translate(-50%) rotate(45deg);
-        }
-        &:last-child {
-          transform: translate(-50%) rotate(-45deg);
-        }
+    
+    &_default {
+      > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      &.hidden {
+        transform: rotate(180deg);
       }
     }
-    &.hidden{
-      transform: rotate(-180deg);
+
+    &_active {
+      > div {
+        position: relative;
+
+        > div {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%);
+
+          &:first-child {
+            transform: translate(-50%) rotate(45deg);
+          }
+
+          &:last-child {
+            transform: translate(-50%) rotate(-45deg);
+          }
+        }
+      }
+
+      &.hidden {
+        transform: rotate(-180deg);
+      }
     }
   }
   
@@ -81,11 +83,11 @@ const MenuBurger = styled.div`
   }
 `;
 
-const Burger = ({activateMenu,deactivateMenu,menuActiveStatus}) => {
+const Burger = ({activateMenu,deactivateMenu,menuActiveStatus,isBackActive}) => {
     return (
         <MenuBurger>
             <div
-                className={`burger burger_default ${menuActiveStatus ?'hidden' :''}`}
+                className={`burger burger_default ${menuActiveStatus ?'hidden' :''} ${isBackActive ?'burger_light' :''}`}
                 onClick={activateMenu}
             >
                 <div>

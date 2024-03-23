@@ -22,18 +22,7 @@ const TitleContent = styled.div`
     justify-content: left;
     color: #0e0f19;
     opacity: 0;
-    animation: titleMove .5s ease-in-out;
-
-    @keyframes titleMove {
-      0% {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
+    transition: color .2s ease-in-out;
 
     b{
       margin-right: 1rem;

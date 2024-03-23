@@ -3,6 +3,8 @@ import styled from "styled-components";
 import config from "../../../configs/landingBackAndTitles";
 import Title from "../../../components/landing/Title";
 import BackAnimated from "../../../components/landing/BackAnimated";
+import {useDispatch, useSelector} from "react-redux";
+import {setBackActiveStatus} from "../../../store/landingSlice";
 
 const LandingContent = styled.section`
   width: 100vw;
@@ -16,12 +18,14 @@ const LandingContent = styled.section`
 `;
 
 const Landing = ({windowHeight}) => {
+    const dispatch = useDispatch();
+    const {isBackActive} = useSelector(state => state.landingSlice);
+
     const backAnimationSpeed = 2400;
     const titleAnimationSpeed = backAnimationSpeed/50;
 
     const [title,setTitle] = useState(config.default);
     const [intervalId, setIntervalId] = useState(null);
-    const [isBackActive, setIsBackActive] = useState(false);
     const [titleAndBackIndex, setTitleAndBackIndex] = useState(null);
     const titleIntervalRef = useRef(null);
 
@@ -48,7 +52,7 @@ const Landing = ({windowHeight}) => {
     };
     const startInterval = () => {
         if (!intervalId) {
-            setIsBackActive(true);
+            dispatch(setBackActiveStatus(true));
             handleNextBodyBack();
             const id = setInterval(() => {
                 handleNextBodyBack();
@@ -59,7 +63,7 @@ const Landing = ({windowHeight}) => {
     };
     const stopInterval = () => {
         if (intervalId) {
-            setIsBackActive(false);
+            dispatch(setBackActiveStatus(false));
             clearInterval(intervalId);
             clearInterval(titleIntervalRef.current)
             setIntervalId(null);
@@ -90,6 +94,12 @@ const Landing = ({windowHeight}) => {
             title.style.animationDelay = `${index * timing}s`;
             setTimeout(()=>{title.style.opacity = '1'},index * timing * 1000)
         });
+
+        return () => {
+            // Здесь можно выполнить нужные действия перед удалением компоненты,
+            // например, выполнить диспатч
+            dispatch(setBackActiveStatus(true));
+        };
     },[]);
     window.addEventListener('scroll',autoStopAnimation);
 

@@ -7,14 +7,18 @@ const LogoImg = styled.img`
   object-fit: contain;
   z-index: 9999;
   pointer-events: auto;
-  transition: opacity .2s ease-in-out;
+  transition: .2s ease-in-out;
+  
+  &.light{
+    filter: invert(1);
+  }
   
   &.hidden{
     opacity: 0;
   }
 `;
 
-const Logo = ({windowHeight}) => {
+const Logo = ({windowHeight, isBackActive, menuActiveStatus}) => {
     const [logoShowedStatus,setLogoShowedStatus] = useState(true);
 
     const handleShowOrHideLogo = () => {
@@ -30,7 +34,10 @@ const Logo = ({windowHeight}) => {
     return (
         <LogoImg
             src={logo} alt="fiteg logo"
-            className={logoShowedStatus ?'' :'hidden'}
+            className={`
+                ${logoShowedStatus ?'' :'hidden'}
+                ${isBackActive && !menuActiveStatus ?'light' :''}
+            `}
         />
     );
 };

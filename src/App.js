@@ -8,9 +8,34 @@ import {Route, Routes} from "react-router-dom";
 import Logo from "./layout/header/Logo";
 import Header from "./layout/header/Header";
 import Footer from "./layout/footer/Footer";
+import {useSelector} from "react-redux";
 
 const AppContent = styled.div`
-    position: relative;
+  position: relative;
+  
+  &.active{
+    .wrapper{
+      width: 720px;
+      max-width: 70vw;
+      height: 100vh;
+      border-radius: 2vw;
+      overflow-y: hidden;
+      padding-top: 2vw;
+      padding-inline: 2vw;
+      box-sizing: border-box;
+
+      .content{
+        display: none;
+      }
+      .menu{
+        display: inline;
+      }
+    }
+    .footer{display: none}
+    .main_overlay{
+      background-color: #0e0f19;
+    }
+  }
 `;
 const Wrapper = styled.div`
   width: 100vw;
@@ -19,17 +44,15 @@ const Wrapper = styled.div`
   z-index: 1;
   background-color: #fdfdfd;
   transition: width .2s ease-in-out;
-  
-  &.active{
-    width: 720px;
-    max-width: 70vw;
-    border-radius: 2vw;
-    overflow-y: hidden;
+
+  &>.menu{
+    display: none;
   }
 
-  .content {
+  &>.content {
     position: relative;
     z-index: 2;
+    display: inline-block;
   }
 `;
 const Overlay = styled.div`
@@ -40,9 +63,6 @@ const Overlay = styled.div`
   left: 0;
   background-color: #fdfdfd;
   transition: background-color 0.2s ease-in-out;
-  &.dark{
-    background-color: #0e0f19;
-  }
 `;
 
 const App = () => {
@@ -66,11 +86,12 @@ const App = () => {
     window.addEventListener('resize', handleResize);
 
     return(
-        <AppContent>
-            <Wrapper className={menuActiveStatus ?'active' :''}>
-                {menuActiveStatus
-                    ?<Menu menuActiveStatus={menuActiveStatus}/>
-                    :<div className='content'>
+        <AppContent
+            className={menuActiveStatus ?'active' :''}
+        >
+            <Wrapper className='wrapper'>
+                    <Menu menuActiveStatus={menuActiveStatus}/>
+                    <div className='content'>
                         <Routes>
                             <Route path='/' element={
                                 <MainPage
@@ -81,8 +102,23 @@ const App = () => {
                             }/>
                         </Routes>
                     </div>
-                }
             </Wrapper>
+            {/*<Wrapper className={menuActiveStatus ?'active' :''}>*/}
+            {/*    {menuActiveStatus*/}
+            {/*        ?<Menu menuActiveStatus={menuActiveStatus}/>*/}
+            {/*        :<div className='content'>*/}
+            {/*            <Routes>*/}
+            {/*                <Route path='/' element={*/}
+            {/*                    <MainPage*/}
+            {/*                        isMobile={isMobile}*/}
+            {/*                        windowWidth={windowWidth}*/}
+            {/*                        windowHeight={windowHeight}*/}
+            {/*                    />*/}
+            {/*                }/>*/}
+            {/*            </Routes>*/}
+            {/*        </div>*/}
+            {/*    }*/}
+            {/*</Wrapper>*/}
             <Header
                 menuActiveStatus={menuActiveStatus}
                 activateMenu={activateMenu}
@@ -91,7 +127,7 @@ const App = () => {
             />
             <Footer/>
             <Overlay
-                className={menuActiveStatus ?'dark' :''}
+                className='main_overlay'
                 onClick={deactivateMenu}
             />
         </AppContent>

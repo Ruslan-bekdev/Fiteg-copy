@@ -41,7 +41,7 @@ const Logo = styled.div`
 
 const Footer = () => {
     return (
-        <FooterContent>
+        <FooterContent className='footer'>
             <Logo>
                 <img
                     src={logo}

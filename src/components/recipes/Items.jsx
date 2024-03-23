@@ -44,7 +44,7 @@ const ItemsContent = styled.div`
       object-fit: cover;
       border-radius: 1rem;
       @media (max-width: 740px){
-        height: 30dvh;
+        object-fit: contain;
       }
     }
   }

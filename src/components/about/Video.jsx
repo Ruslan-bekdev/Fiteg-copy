@@ -24,6 +24,7 @@ const VideoContent = styled.div`
   
   img {
     width: 100%;
+    max-height: 40vh;
     object-fit: contain;
     border-radius: 2vw;
     transition: .2s ease-in-out;

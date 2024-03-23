@@ -10,10 +10,7 @@ const MenuContent = styled.div`
   position: relative;
   top: 0;
   left: 0;
-  padding-top: 2vw;
-  padding-inline: 2vw;
   text-align: center;
-  box-sizing: border-box;
   overflow-y: hidden;
 
   .menu__header {
@@ -59,7 +56,7 @@ const Menu = ({menuActiveStatus}) => {
     },[]);
 
     return (
-        <MenuContent>
+        <MenuContent className='menu'>
             <div className='menu__header'>
                 <span>
                     <b>Язык</b>
