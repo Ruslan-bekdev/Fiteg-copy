@@ -3,6 +3,7 @@ import poster from "../../assets/aboutUs/video-poster.png";
 import styled from "styled-components";
 
 const VideoContent = styled.div`
+  flex-grow: 1;
   height: fit-content;
   position: sticky;
   top: 64px;
@@ -26,7 +27,7 @@ const VideoContent = styled.div`
     width: 100%;
     max-height: 40vh;
     object-fit: contain;
-    border-radius: 2vw;
+    border-radius: calc(.9875rem + 1.86275vw);
     transition: .2s ease-in-out;
 
     @media (hover: hover) {
@@ -48,11 +49,11 @@ const VideoContent = styled.div`
     cursor: pointer;
     text-decoration: none;
     transition: .2s ease-in-out;
+    margin-inline: auto;
 
     b {
       font-size: 1rem;
       display: inline-block;
-      position: relative;
       color: #fff;
       transition: .2s ease-in-out;
     }

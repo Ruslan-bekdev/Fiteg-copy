@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const MenuBurger = styled.div`
   width: 2rem;
+  max-width: 6vw;
   aspect-ratio: 1;
   position: relative;
   pointer-events: auto;
@@ -83,11 +84,11 @@ const MenuBurger = styled.div`
   }
 `;
 
-const Burger = ({activateMenu,deactivateMenu,menuActiveStatus,isBackActive}) => {
+const Burger = ({activateMenu,deactivateMenu,menuActiveStatus,isBackActive,isMainPage}) => {
     return (
         <MenuBurger>
             <div
-                className={`burger burger_default ${menuActiveStatus ?'hidden' :''} ${isBackActive ?'burger_light' :''}`}
+                className={`burger burger_default ${menuActiveStatus ?'hidden' :''} ${isBackActive && isMainPage ?'burger_light' :''}`}
                 onClick={activateMenu}
             >
                 <div>

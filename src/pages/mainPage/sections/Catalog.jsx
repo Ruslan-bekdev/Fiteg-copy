@@ -17,7 +17,7 @@ const Catalog = ({isMobile,windowHeight}) => {
     const [animatedStatus,setAnimatedStatus] = useState(false);
 
     const handleScrollMarqueeAnimation = () => {
-        const element = document.querySelector('.marquee');
+        const element = document.querySelector('.catalog__marquee');
         const windowPositionY = window.scrollY;
 
         if (windowPositionY > windowHeight * 2 || !element) return;
@@ -25,7 +25,7 @@ const Catalog = ({isMobile,windowHeight}) => {
         element.style.top = `${windowPositionY/2.2}px`;
     };
     const handleScrollProductsAnim = () => {
-        const productElements = document.querySelectorAll('.product');
+        const productElements = document.querySelectorAll('.catalog__product');
         const windowPositionY = window.scrollY;
 
         if (windowPositionY > windowHeight * 2 || !productElements || isMobile) return;

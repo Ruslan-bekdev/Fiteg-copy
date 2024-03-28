@@ -1,37 +1,46 @@
 import React, {Fragment, useEffect} from 'react';
 import styled from "styled-components";
-import {marquee_main} from "../../configs/marquee";
+import {marquee_product} from "../../../configs/marquee";
 
 const MarqueeContent = styled.div`
   width: 100vw;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   overflow: hidden;
-  
-  #marquee_animated{
+  background-color: #fdc757;
+  margin-block: 4rem 8rem;
+  padding-block: .5rem;
+
+  #marquee_animated {
     width: 200%;
     display: flex;
     align-items: center;
     justify-content: space-around;
   }
-  h2{
+
+  h2 {
     white-space: nowrap;
     width: 100%;
     font-size: var(--dynamic-fontSize);
     display: flex;
     align-items: center;
-    img{
+
+    img {
       aspect-ratio: 1;
+    }
+    
+    @media (min-width: 1230px){
+      font-size: 3rem !important;
+      
+      img{
+        height: 4rem !important;
+      }
     }
   }
 `;
 
 const Marquee = () => {
     const marqueeImgHeight = 5;
-    const marqueeSpanMargin = 2;
-    const marqueeArray = Object.entries(marquee_main);
+    const marqueeSpanMargin = 1.4;
+    const marqueeArray = Object.entries(marquee_product);
     const marqueeElementsCount = marqueeArray.length;
 
     const animateMarquee = () => {
@@ -61,10 +70,10 @@ const Marquee = () => {
         ,0);
     const marqueeFontSize = (200-marqueeImgHeight)
         /(marqueeSymbolsLenght + (marqueeSpanMargin+marqueeImgHeight)*marqueeElementsCount);
-    const marqueeAnimationSpeed = 20;
+    const marqueeAnimationSpeed = 40;
 
     const renderMarqueeContent = () =>
-        marquee_main.map((item, index) =>
+        marquee_product.map((item, index) =>
             <Fragment key={index}>
                 <img
                     src={item.svg} alt=""

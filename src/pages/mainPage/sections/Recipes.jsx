@@ -27,7 +27,7 @@ const Recipes = ({windowHeight}) => {
     };
 
     const handleShowActiveText = () => {
-        const images = document.querySelectorAll('.image');
+        const images = document.querySelectorAll('.recipe__image');
 
         if (!images) return;
 
@@ -45,9 +45,9 @@ const Recipes = ({windowHeight}) => {
     window.addEventListener('scroll', handleShowActiveText);
 
     useEffect(() => {
-        const images = document.querySelectorAll('.image');
-        const caption = document.querySelector('.caption')
-        const counter = document.querySelector('.counter')
+        const images = document.querySelectorAll('.recipe__image');
+        const caption = document.querySelector('.recipe__caption')
+        const counter = document.querySelector('.recipe__counter')
 
         if (!images || !caption || !counter) return;
 

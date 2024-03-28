@@ -112,7 +112,7 @@ const Caption = styled.div`
 const Items = ({activeCardIndex,activateModal}) => {
     return (
         <ItemsContent>
-            <span className='counter'>
+            <span className='recipe__counter counter'>
                 <b>{activeCardIndex+1}</b>
                 <input type="range" disabled
                        min="0" max={recipes.length-1}
@@ -125,13 +125,13 @@ const Items = ({activeCardIndex,activateModal}) => {
                         <img
                             src={recipe.image}
                             alt={recipe.title}
-                            className='image'
+                            className='image recipe__image'
                             key={index}
                         />
                     )
                 }
             </div>
-            <Caption className='caption'>
+            <Caption className='caption recipe__caption'>
                 <h3>{recipes[activeCardIndex].title}</h3>
                 <p>{recipes[activeCardIndex].caption}</p>
                 <span>

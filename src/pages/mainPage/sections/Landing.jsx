@@ -15,6 +15,7 @@ const LandingContent = styled.section`
   justify-content: center;
   transition: .5s ease-in-out;
   overflow: hidden;
+  margin-top: 0;
 `;
 
 const Landing = ({windowHeight}) => {
@@ -85,7 +86,7 @@ const Landing = ({windowHeight}) => {
         }
     },[title]);
     useEffect(()=>{
-        const titles = document.querySelectorAll('h2')
+        const titles = document.querySelectorAll('.landing__title h2');
         const timing = .1;
 
         if (!titles) return;
@@ -96,9 +97,7 @@ const Landing = ({windowHeight}) => {
         });
 
         return () => {
-            // Здесь можно выполнить нужные действия перед удалением компоненты,
-            // например, выполнить диспатч
-            dispatch(setBackActiveStatus(true));
+            dispatch(setBackActiveStatus(false));
         };
     },[]);
     window.addEventListener('scroll',autoStopAnimation);

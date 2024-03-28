@@ -14,7 +14,7 @@ const MenuContent = styled.div`
   overflow-y: hidden;
 
   .menu__header {
-    height: 10vh;
+    height: 6vh;
     font-size: 1.4rem;
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@ const MenuContent = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 2vw;
+      border-radius: calc(.9875rem + 1.86275vw);
       background-color: #f2f3f4;
       cursor: pointer;
       @media (hover: hover) {
@@ -37,11 +37,11 @@ const MenuContent = styled.div`
   }
 `;
 
-const Menu = ({menuActiveStatus}) => {
+const Menu = ({deactivateMenu,menuActiveStatus}) => {
 
     const updatePadding = () => {
-        const itemsList = document.querySelector('.showed');
-        const itemHeight = document.querySelector('.item').clientHeight;
+        const itemsList = document.querySelector('.menu_showed');
+        const itemHeight = document.querySelector('.menu__item').clientHeight;
 
         if (!itemsList) return;
 
@@ -64,6 +64,7 @@ const Menu = ({menuActiveStatus}) => {
             </div>
             <MenuItemsList
                 menuActiveStatus={menuActiveStatus}
+                deactivateMenu={deactivateMenu}
             />
         </MenuContent>
     );

@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import products from "../../configs/products";
 import styled from "styled-components";
+import {useNavigate} from "react-router-dom";
 
 const ProductsContent = styled.div`
   width: 100%;
@@ -216,6 +217,11 @@ const ProductsContent = styled.div`
 `;
 
 const Products = ({animatedStatus,isMobile}) => {
+    const navigate = useNavigate();
+
+    const toProductPage = ({id}) => {
+        navigate(`/product/${id}`)
+    };
 
     return(
         <ProductsContent
@@ -223,7 +229,7 @@ const Products = ({animatedStatus,isMobile}) => {
         >
             {products.map((product, index) =>
                 <div
-                    className='product'
+                    className='product catalog__product'
                     key={index}
                 >
                     <div
@@ -234,6 +240,7 @@ const Products = ({animatedStatus,isMobile}) => {
                             '--top': `${!isMobile ? (product.positions.top_catalog / 1.5) : ''}dvh`,
                             '--rotate': `${product.positions.rotate_catalog}deg`,
                         }}
+                        onClick={()=>toProductPage({id: index})}
                     >
                         <div className='back'/>
                         <img

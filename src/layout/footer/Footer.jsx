@@ -8,7 +8,7 @@ const FooterContent = styled.footer`
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 2.5vw;
+  padding: 2.5vw 2vw;
   display: flex;
   align-items: end;
   justify-content: space-between;
@@ -17,24 +17,23 @@ const FooterContent = styled.footer`
   
   &>b, &>b *{
     color: #000;
-    font-size: 1.8vw;
+    font-size: 1.2vw;
   }
 `;
 
 const Logo = styled.div`
-  
   display: flex;
   align-items: center;
   justify-content: start;
   
   img{
-    width: 18vw;
+    width: 10vw;
     object-fit: contain;
-    margin-right: -11vw;
+    margin-right: -6vw;
     margin-top: -.8vw;
   }
   b{
-    font-size: 1.8vw;
+    font-size: 1.2vw;
     color: #000;
   }
 `;

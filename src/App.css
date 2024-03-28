@@ -37,6 +37,7 @@
 section {
     min-height: 100dvh;
     margin-top: 8rem;
+    margin-inline: auto;
     box-sizing: border-box;
 }
 section:first-child {

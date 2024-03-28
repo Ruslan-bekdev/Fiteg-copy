@@ -5,11 +5,12 @@ import instagram from "../../../assets/social/instagram.svg";
 
 const SocialContent = styled.section`
   width: 100vw;
+  max-height: 100dvh;
   background-color: #fdc757;
   position: relative;
   margin-top: 0;
 
-  .item {
+  .social__item {
     aspect-ratio: 1;
     background-size: cover;
     background-position: center;
@@ -70,7 +71,7 @@ const SocialContent = styled.section`
     min-height: calc(60 * var(--rem));
   }
   @media (min-width: 740px) and (max-width: 1230px){
-    min-height: calc(38 * var(--rem));
+    height: calc(38 * var(--rem));
   }
 `;
 
@@ -147,7 +148,7 @@ const Social = ({windowWidth, windowHeight}) => {
 
     const handleScrollItemAnim = () => {
         const bodyHeight = document.body.clientHeight;
-        const item = document.querySelector('.item');
+        const item = document.querySelector('.social__item');
         const windowPositionY = window.scrollY;
 
         if (!item) return;
@@ -167,7 +168,7 @@ const Social = ({windowWidth, windowHeight}) => {
     return (
         <SocialContent>
             <div
-                className={`item ${itemAnimStatus ?'showed' :''}`}
+                className={`social__item ${itemAnimStatus ?'showed' :''}`}
                 style={{
                     backgroundImage: `url(${spongeTexture})`,
                     width: `45${isWindowHorizontal ?'vw' :'dvh'}`,
@@ -222,8 +223,8 @@ const Social = ({windowWidth, windowHeight}) => {
                     </defs>
                     <text
                         style={{
-                            fontSize: '.2rem',
-                            letterSpacing: '.11rem',
+                            fontSize: '.17rem',
+                            letterSpacing: '.13rem',
                         }}
                     >
                         <textPath href="#circle">

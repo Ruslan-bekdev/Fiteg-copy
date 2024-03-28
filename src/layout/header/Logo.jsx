@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const LogoImg = styled.img`
   height: 2rem;
+  max-height: 6vw;
   object-fit: contain;
   z-index: 9999;
   pointer-events: auto;
@@ -18,13 +19,13 @@ const LogoImg = styled.img`
   }
 `;
 
-const Logo = ({windowHeight, isBackActive, menuActiveStatus}) => {
+const Logo = ({isBackActive, menuActiveStatus, isMainPage}) => {
     const [logoShowedStatus,setLogoShowedStatus] = useState(true);
 
     const handleShowOrHideLogo = () => {
       const positionY = window.scrollY;
 
-      (positionY < windowHeight/2)
+      (positionY < 10)
         ?setLogoShowedStatus(true)
         :setLogoShowedStatus(false);
     };
@@ -36,7 +37,7 @@ const Logo = ({windowHeight, isBackActive, menuActiveStatus}) => {
             src={logo} alt="fiteg logo"
             className={`
                 ${logoShowedStatus ?'' :'hidden'}
-                ${isBackActive && !menuActiveStatus ?'light' :''}
+                ${isBackActive && !menuActiveStatus && isMainPage ?'light' :''}
             `}
         />
     );

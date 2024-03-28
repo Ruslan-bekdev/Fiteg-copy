@@ -80,7 +80,7 @@ const TitleContent = styled.div`
 
 const Title = ({title,isBackActive,startInterval,stopInterval}) => {
     return (
-        <TitleContent className={`container ${isBackActive ?'title_light' :''}`}>
+        <TitleContent className={`container landing__title ${isBackActive ?'title_light' :''}`}>
             <h2>
                 <b>Cage-Free Egg</b>
                 <img src={title1} alt=""/>

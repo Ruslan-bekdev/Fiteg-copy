@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import products from "../../configs/products";
+import {useNavigate} from "react-router-dom";
 
 const Items = styled.div`
   height: 100vh;
@@ -15,7 +16,7 @@ const Items = styled.div`
   padding-top: 1rem;
   gap: 7dvh;
   
-  .item{
+  .menu__item{
     width: 100%;
     aspect-ratio: 2;
     max-height: 75dvh;
@@ -43,7 +44,7 @@ const Items = styled.div`
       margin-top: 4%;
     }
   }
-  &.showed>div {
+  &.menu_showed>div {
     animation: move .6s ease-in-out;
   }
 
@@ -60,15 +61,21 @@ const Items = styled.div`
   }
 `;
 
-const MenuItemsList = ({menuActiveStatus}) => {
+const MenuItemsList = ({deactivateMenu,menuActiveStatus}) => {
     const cardMargin = 16;
+    const navigate = useNavigate();
+
+    const toProductPage = ({id}) => {
+        deactivateMenu();
+        navigate(`/product/${id}`);
+    };
 
     return (
-        <Items className={menuActiveStatus ?'showed' :''}>
+        <Items className={menuActiveStatus ?'menu_showed' :''}>
             {
                 products.map((product,index) =>
                     <div
-                        className='item'
+                        className='menu__item'
                         style={{
                             backgroundColor: product.color,
                             top: `${cardMargin * index}px`,
@@ -77,6 +84,7 @@ const MenuItemsList = ({menuActiveStatus}) => {
                             '--offset': `${15 + index * 15}`,
                         }}
                         key={index}
+                        onClick={()=>toProductPage({id: index})}
                     >
                         <b>{index+1}</b>
                         <img

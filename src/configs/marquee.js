@@ -1,9 +1,13 @@
-import crossed_milk from "../assets/marquee/crossed_milk.svg";
-import crossed_soy from "../assets/marquee/crossed_soy.svg";
-import crossed_sugar from "../assets/marquee/crossed_sugar.svg";
-import crossed_gluten from "../assets/marquee/crossed_gluten.svg";
+import crossed_milk from "../assets/marquee/catalog/crossed_milk.svg";
+import crossed_soy from "../assets/marquee/catalog/crossed_soy.svg";
+import crossed_sugar from "../assets/marquee/catalog/crossed_sugar.svg";
+import crossed_gluten from "../assets/marquee/catalog/crossed_gluten.svg";
 
-const marquee = [
+import one from '../assets/marquee/product/1.svg';
+import two from '../assets/marquee/product/2.svg';
+import three from '../assets/marquee/product/3.svg';
+
+export const marquee_main = [
     {
         svg: crossed_milk,
         text: '0% milk, lactose',
@@ -22,4 +26,17 @@ const marquee = [
     },
 ];
 
-export default marquee;
+export const marquee_product = [
+    {
+        svg: one,
+        text: 'shake well',
+    },
+    {
+        svg: two,
+        text: 'keep chilled',
+    },
+    {
+        svg: three,
+        text: 'enjoy right away',
+    },
+];

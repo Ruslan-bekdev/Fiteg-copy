@@ -1,18 +1,17 @@
-import React, {useState,useEffect} from "react";
+import React, {useState} from "react";
 import './App.css';
-import MainPage from "./pages/mainPage/MainPage";
 import styled from "styled-components";
-import Burger from "./layout/header/Burger";
-import Menu from "./layout/menu/Menu";
 import {Route, Routes} from "react-router-dom";
-import Logo from "./layout/header/Logo";
+
+import Menu from "./layout/menu/Menu";
 import Header from "./layout/header/Header";
 import Footer from "./layout/footer/Footer";
-import {useSelector} from "react-redux";
+import MainPage from "./pages/mainPage/MainPage";
+import ProductPage from "./pages/productPage/ProductPage";
 
 const AppContent = styled.div`
   position: relative;
-  
+
   &.active{
     .wrapper{
       width: 720px;
@@ -90,8 +89,11 @@ const App = () => {
             className={menuActiveStatus ?'active' :''}
         >
             <Wrapper className='wrapper'>
-                    <Menu menuActiveStatus={menuActiveStatus}/>
-                    <div className='content'>
+                <Menu
+                    menuActiveStatus={menuActiveStatus}
+                    deactivateMenu={deactivateMenu}
+                />
+                <div className='content'>
                         <Routes>
                             <Route path='/' element={
                                 <MainPage
@@ -100,30 +102,16 @@ const App = () => {
                                     windowHeight={windowHeight}
                                 />
                             }/>
+                            <Route path='/product/:id' element={
+                                <ProductPage/>
+                            }/>
                         </Routes>
                     </div>
             </Wrapper>
-            {/*<Wrapper className={menuActiveStatus ?'active' :''}>*/}
-            {/*    {menuActiveStatus*/}
-            {/*        ?<Menu menuActiveStatus={menuActiveStatus}/>*/}
-            {/*        :<div className='content'>*/}
-            {/*            <Routes>*/}
-            {/*                <Route path='/' element={*/}
-            {/*                    <MainPage*/}
-            {/*                        isMobile={isMobile}*/}
-            {/*                        windowWidth={windowWidth}*/}
-            {/*                        windowHeight={windowHeight}*/}
-            {/*                    />*/}
-            {/*                }/>*/}
-            {/*            </Routes>*/}
-            {/*        </div>*/}
-            {/*    }*/}
-            {/*</Wrapper>*/}
             <Header
                 menuActiveStatus={menuActiveStatus}
                 activateMenu={activateMenu}
                 deactivateMenu={deactivateMenu}
-                windowHeight={windowHeight}
             />
             <Footer/>
             <Overlay
