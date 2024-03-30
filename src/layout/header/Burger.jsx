@@ -30,7 +30,7 @@ const MenuBurger = styled.div`
       > div {
         width: 100%;
         height: 20%;
-        border-radius: .5rem;
+        border-radius: calc(.9875rem + 1.86275vw);
         background-color: #fff;
       }
     }

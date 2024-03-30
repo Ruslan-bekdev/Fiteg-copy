@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import products from "../../configs/products";
 import {useNavigate} from "react-router-dom";
@@ -9,7 +9,6 @@ const Items = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  padding-bottom: 100%;
   box-sizing: border-box;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -21,7 +20,7 @@ const Items = styled.div`
     aspect-ratio: 2;
     max-height: 75dvh;
     background-color: #069c6b;
-    border-radius: 2vw;
+    border-radius: calc(.9875rem + 1.86275vw);
     position: sticky;
     top: 0;
     display: flex;
@@ -69,6 +68,13 @@ const MenuItemsList = ({deactivateMenu,menuActiveStatus}) => {
         deactivateMenu();
         navigate(`/product/${id}`);
     };
+    useEffect(() => {
+        const items = document.querySelector('.menu_showed');
+
+        if (!items) return;
+
+        items.scrollTo(0, 0);
+    }, [menuActiveStatus]);
 
     return (
         <Items className={menuActiveStatus ?'menu_showed' :''}>
@@ -88,7 +94,7 @@ const MenuItemsList = ({deactivateMenu,menuActiveStatus}) => {
                     >
                         <b>{index+1}</b>
                         <img
-                            src={product.photos.main} alt={product.name}
+                            src={product.images.main} alt={product.name}
                             style={{transform: `rotate(${product.positions.rotate_menu}deg)`}}
                         />
                     </div>

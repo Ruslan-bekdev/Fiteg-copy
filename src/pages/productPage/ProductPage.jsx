@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import {NavLink, useNavigate, useParams} from "react-router-dom";
 import ProductMain from "./sections/ProductMain";
@@ -8,9 +8,9 @@ import Recommendations from "./sections/Recommendations";
 import products from "../../configs/products";
 
 const Product = styled.main`
-  padding-block: 8vh;
+  padding-top: 8vh;
 `;
-const Back = styled.main`
+const Back = styled.div`
   width: 100%;
   max-width: 1920px;
   margin-inline: auto;
@@ -36,15 +36,28 @@ const Back = styled.main`
       }
     }
   }
+
+  @media (max-width: 740px) {
+    &>*{
+      margin-block: 0 4rem;
+      margin-left: 4vw;
+      padding-block: 1.2rem;
+      padding-inline: 1.8rem;
+    }
+  }
 `;
 
-const ProductPage = () => {
+const ProductPage = ({windowWidth}) => {
     const {id} = useParams();
     const navigate = useNavigate();
 
     const toProductLink = ({id}) => {
         navigate(`/product/${id}`);
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
 
     return (
         <Product>
@@ -53,8 +66,13 @@ const ProductPage = () => {
                     {'< Назад'}
                 </NavLink>
             </Back>
-            <ProductMain product={products[id]}/>
-            <ProductSecondary product={products[id]}/>
+            <ProductMain
+                product={products[id]}
+                windowWidth={windowWidth}
+            />
+            <ProductSecondary
+                product={products[id]}
+            />
             <Marquee/>
             <Recommendations
                 products={products}

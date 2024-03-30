@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import products from "../../configs/products";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
@@ -42,7 +42,7 @@ const ProductsContent = styled.div`
           display: flex;
           align-items: center;
           background-color: #0e0f19;
-          border-radius: 1rem;
+          border-radius: calc(.9875rem + 1.86275vw);
           color: #fdfdfd;
           margin-inline: auto;
           position: relative;
@@ -190,6 +190,7 @@ const ProductsContent = styled.div`
 
       &__content {
         justify-content: space-between;
+        cursor: pointer;
 
         .back{
           position: absolute;
@@ -244,30 +245,32 @@ const Products = ({animatedStatus,isMobile}) => {
                     >
                         <div className='back'/>
                         <img
-                            src={product.photos.catalog} alt={product.name}
+                            src={product.images.catalog} alt={product.name}
                         />
                         <div className='product__desc'>
                             <div className='nutritionalInfo'>
                                 <div className='nutritionalInfo__content'>
                                     <h3>
                                         {
-                                            product.nutritionalInformation.eggWhites
+                                            product.nutritionalInformation[0].value
                                         }
+                                        <span>{product.nutritionalInformation[0].x}</span>
                                     </h3>
                                     <span>
-                                    egg whites
-                                </span>
+                                        {product.nutritionalInformation[0].underText}
+                                    </span>
                                 </div>
                                 <hr/>
                                 <div className='nutritionalInfo__content'>
                                     <h3>
                                         {
-                                            product.nutritionalInformation.protein
+                                            product.nutritionalInformation[1].value
                                         }
+                                        <span>{product.nutritionalInformation[1].x}</span>
                                     </h3>
                                     <span>
-                                    protein
-                                </span>
+                                        {product.nutritionalInformation[1].underText}
+                                    </span>
                                 </div>
                             </div>
                             <h3>

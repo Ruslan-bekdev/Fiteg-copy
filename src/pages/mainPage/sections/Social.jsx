@@ -125,7 +125,7 @@ const Smile = styled.div`
       width: 1vw;
       aspect-ratio: 5;
       background-color: #000;
-      border-radius: 2vw;
+      border-radius: calc(.9875rem + 1.86275vw);
       position: absolute;
       top: 0;
       box-sizing: border-box;

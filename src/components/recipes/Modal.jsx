@@ -29,7 +29,7 @@ const ModalContent = styled.div`
   padding: 5vw 5vw;
   z-index: 2000;
   transition: .2s ease-in-out;
-  border-radius: 2vw;
+  border-radius: calc(.9875rem + 1.86275vw);
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;

@@ -42,7 +42,7 @@ const ItemsContent = styled.div`
       max-width: 40vw;
       position: sticky;
       object-fit: cover;
-      border-radius: 1rem;
+      border-radius: calc(.9875rem + 1.86275vw);
       @media (max-width: 740px){
         object-fit: contain;
       }
@@ -67,7 +67,7 @@ const Caption = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2vw;
+    border-radius: calc(.9875rem + 1.86275vw);
     background-color: #f2f3f4;
     cursor: pointer;
     

@@ -19,6 +19,13 @@ const FooterContent = styled.footer`
     color: #000;
     font-size: 1.2vw;
   }
+
+  @media (max-width: 740px) {
+    padding: 2.5vw 4vw;
+    &>b, &>b *{
+      font-size: 2.2vw;
+    }
+  }
 `;
 
 const Logo = styled.div`
@@ -35,6 +42,17 @@ const Logo = styled.div`
   b{
     font-size: 1.2vw;
     color: #000;
+  }
+
+  @media (max-width: 740px) {
+    img{
+      width: 20vw;
+      margin-right: -12vw;
+      margin-top: -.8vw;
+    }
+    b{
+      font-size: 2.2vw;
+    }
   }
 `;
 

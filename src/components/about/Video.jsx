@@ -43,7 +43,7 @@ const VideoContent = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2vw;
+    border-radius: calc(.9875rem + 1.86275vw);
     background-color: #272730;
     margin-top: .75rem;
     cursor: pointer;

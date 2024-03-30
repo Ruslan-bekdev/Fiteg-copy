@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from "styled-components";
 
-const RecommendationsContent = styled.div`
+const RecommendationsContent = styled.section`
   width: 100%;
   max-width: 1740px;
-  padding-inline: 2vw;
+  min-height: auto;
+  padding-inline: 4vw;
   margin-bottom: 5rem;
+  box-sizing: border-box;
   
   h2{
     text-align: center;
@@ -25,7 +27,6 @@ const ProductList = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 2%;
-  cursor: pointer;
 
   &>div{
     width: 48%;
@@ -43,13 +44,14 @@ const ProductList = styled.div`
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
+      cursor: pointer;
       img{
         width: 100%;
         transition: .1s ease-in-out;
       }
     }
     
-    span{
+    h3{
       position: absolute;
       bottom: 0;
       transform: translateY(150%);
@@ -59,6 +61,12 @@ const ProductList = styled.div`
       &:hover>div img{
         transform: scale(1.1) rotate(-6deg);
       }
+    }
+  }
+  
+  @media (max-width: 740px) {
+    h3{
+      font-size: 1.4rem;
     }
   }
 `;
@@ -74,13 +82,14 @@ const Recommendations = ({products,id,toProductLink}) => {
                         +index === +id
                             ? ''
                             : <div
-                                onClick={()=>toProductLink({id:index})}
                                 style={{backgroundColor: product.color}}
                             >
-                                <div>
-                                    <img src={product.photos.main} alt=""/>
+                                <div
+                                    onClick={()=>toProductLink({id:index})}
+                                >
+                                    <img src={product.images.main} alt=""/>
                                 </div>
-                                <span>{product.name}</span>
+                                <h3>{product.name}</h3>
                             </div>
                     )
                 }

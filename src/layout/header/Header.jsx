@@ -18,6 +18,11 @@ const HeaderContent = styled.header`
   justify-content: space-between;
   z-index: 9998;
   pointer-events: none;
+
+
+  @media (max-width: 740px) {
+    padding-inline: 5vw;
+  }
 `;
 
 const Header = ({menuActiveStatus,activateMenu,deactivateMenu}) => {

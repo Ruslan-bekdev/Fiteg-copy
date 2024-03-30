@@ -6,7 +6,7 @@ const AboutContent = styled.section`
   width: 100%;
   min-height: auto;
   background-color: #0e0f19;
-  border-radius: 2vw;
+  border-radius: calc(.9875rem + 1.86275vw);
   padding: 4rem;
   box-sizing: border-box;
   color: #fff;

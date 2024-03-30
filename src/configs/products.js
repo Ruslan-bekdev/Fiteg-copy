@@ -16,7 +16,6 @@ import catalog_orange from "../assets/products/orange/catalog.png";
 import gallery1_orange from "../assets/products/orange/gallery/1.jpg";
 import gallery2_orange from "../assets/products/orange/gallery/2.jpg";
 import gallery3_orange from "../assets/products/orange/gallery/3.jpg";
-import gallery4_orange from "../assets/products/orange/gallery/4.jpg";
 
 const product_apple = {
     name: "Манго-смузи",
@@ -91,7 +90,7 @@ const product_apple = {
             caption: "Смузи созданы для всех слоев общества."
         }
     ],
-    photos: {
+    images: {
         main: main_apple,
         catalog: main_apple,
         gallery: [
@@ -181,7 +180,7 @@ const product_mango = {
             caption: "Смузи созданы для всех слоев общества."
         }
     ],
-    photos: {
+    images: {
         main: main_mango,
         catalog: catalog_mango,
         gallery: [
@@ -271,14 +270,13 @@ const product_orange = {
             caption: "Смузи созданы для всех слоев общества."
         }
     ],
-    photos: {
+    images: {
         main: main_orange,
         catalog: catalog_orange,
         gallery: [
             gallery1_orange,
             gallery2_orange,
             gallery3_orange,
-            gallery4_orange,
         ],
     },
     positions: {

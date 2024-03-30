@@ -15,9 +15,9 @@ const AppContent = styled.div`
   &.active{
     .wrapper{
       width: 720px;
-      max-width: 70vw;
+      max-width: 40vw;
       height: 100vh;
-      border-radius: 2vw;
+      border-radius: calc(.9875rem + 1.86275vw);
       overflow-y: hidden;
       padding-top: 2vw;
       padding-inline: 2vw;
@@ -27,7 +27,12 @@ const AppContent = styled.div`
         display: none;
       }
       .menu{
-        display: inline;
+        display: inline-block;
+      }
+      
+      @media (max-width: 740px) {
+        max-width: 70vw;
+        padding-inline: 4vw;
       }
     }
     .footer{display: none}
@@ -103,7 +108,9 @@ const App = () => {
                                 />
                             }/>
                             <Route path='/product/:id' element={
-                                <ProductPage/>
+                                <ProductPage
+                                    windowWidth={windowWidth}
+                                />
                             }/>
                         </Routes>
                     </div>

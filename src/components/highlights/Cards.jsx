@@ -24,7 +24,7 @@ const CardsContent = styled.div`
     text-align: left;
     padding: 2rem;
     box-sizing: border-box;
-    border-radius: 2vw;
+    border-radius: calc(.9875rem + 1.86275vw);
     display: flex;
     flex-direction: column;
     justify-content: end;

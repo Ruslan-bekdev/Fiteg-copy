@@ -2,11 +2,13 @@ import React from 'react';
 import styled from "styled-components";
 import Accordion from "../../../components/product/Accordion";
 
-const Main = styled.div`
+const Main = styled.section`
   width: 100%;
   max-width: 1920px;
+  min-height: auto;
+  margin-block: 0;
   margin-inline: auto;
-  padding-inline: 2vw;
+  padding-inline: 4vw;
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -30,7 +32,7 @@ const Main = styled.div`
     display: flex;
     align-items: center;
     background-color: #0e0f19;
-    border-radius: 1rem;
+    border-radius: calc(.9875rem + 1.86275vw);
     color: #fdfdfd;
 
     hr{
@@ -63,6 +65,18 @@ const Main = styled.div`
       }
     }
   }
+  
+  @media (max-width: 740px) {
+    flex-direction: column;
+
+    &>div{
+      width: 100%;
+      box-sizing: border-box;
+      &:first-child{
+        padding-right: 0;
+      }
+    }
+  }
 `;
 const Image = styled.div`
   height: fit-content;
@@ -76,9 +90,19 @@ const Image = styled.div`
   }
 `;
 
-const ProductMain = ({product}) => {
+const ProductMain = ({windowWidth,product}) => {
     return (
         <Main>
+            {windowWidth < 740
+                ?<Image
+                    style={{
+                        backgroundColor: product.color
+                    }}
+                >
+                    <img src={product.images.main} alt=""/>
+                </Image>
+                :''
+            }
             <div>
                 <h1>{product.name}</h1>
                 <div className='nutritionalInfo'>
@@ -103,13 +127,16 @@ const ProductMain = ({product}) => {
                     ingredients={product.ingredients}
                 />
             </div>
-            <Image
-                style={{
-                    backgroundColor: product.color
-                }}
-            >
-                <img src={product.photos.main} alt=""/>
-            </Image>
+            {windowWidth >= 740
+                ?<Image
+                    style={{
+                        backgroundColor: product.color
+                    }}
+                >
+                    <img src={product.images.main} alt=""/>
+                </Image>
+                :''
+            }
         </Main>
     );
 };

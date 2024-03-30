@@ -1,27 +1,32 @@
 import React from 'react';
 import styled from "styled-components";
+import Carousel from "../../../components/product/Carousel";
 
-const Secondary = styled.div`
+const Secondary = styled.section`
   width: 100%;
   max-width: 1740px;
-  padding-inline: 2vw;
+  min-height: auto;
+  padding-inline: 4vw;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   box-sizing: border-box;
   gap: 2%;
-  margin-top: 10rem;
-
-  &>div{
-    box-sizing: border-box;
-  }
+  position: relative;
 
   @media (min-width: 1230px) {
     width: 85vw;
     margin-inline: auto;
   }
+
+  @media (max-width: 740px) {
+    gap: 0;
+    flex-direction: column;
+  }
 `;
 const Caption = styled.div`
   width: 60%;
+  height: min-content;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,30 +44,27 @@ const Caption = styled.div`
       transform: translateX(-100%);
     }
   }
-`;
-const Carousel = styled.div`
-  flex-grow: 1;
 
-  &>div{
+  @media (max-width: 740px) {
     width: 100%;
-    max-height: 80%;
-    aspect-ratio: 3/4;
-    position: sticky;
-    top: 2rem;
-    border-radius: calc(.9875rem + 1.86275vw);
-    background-image: url("https://fiteg2.lv/_ipx/q_95&s_480x663/images/gallery-02.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    margin-top: 5%;
+    div{
+      width: 70%;
+        h3{
+          font-size: 2rem !important;
+          margin-bottom: 2rem !important;
+          margin-top: 3rem;
+        }
+    }
   }
 `;
 
 const ProductTest = ({product}) => {
     return (
         <Secondary>
-            <Carousel>
-                <div/>
-            </Carousel>
+            <Carousel
+                images={product.images.gallery}
+            />
             <Caption>
                 {
                     product.features.map((feature)=>
