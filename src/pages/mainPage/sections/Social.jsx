@@ -142,9 +142,17 @@ const Smile = styled.div`
   }
 `;
 
-const Social = ({windowWidth, windowHeight}) => {
+const Social = ({windowWidth, windowHeight,roundedText}) => {
     const [isWindowHorizontal,setIsWindowHorizontal] = useState(windowWidth > windowHeight);
     const [itemAnimStatus,setItemAnimStatus] = useState(false);
+    const getRoundedText = (count) => {
+        let text = '';
+        for (let i = 0; i < count; i++) {
+            text += roundedText;
+        }
+
+        return text;
+    }
 
     const handleScrollItemAnim = () => {
         const bodyHeight = document.body.clientHeight;
@@ -228,14 +236,7 @@ const Social = ({windowWidth, windowHeight}) => {
                         }}
                     >
                         <textPath href="#circle">
-                            Хорошего дня!
-                            Хорошего дня!
-                            Хорошего дня!
-                            Хорошего дня!
-                            Хорошего дня!
-                            Хорошего дня!
-                            Хорошего дня!
-                            Хорошего дня!
+                            {getRoundedText(8)}
                         </textPath>
                     </text>
                 </svg>

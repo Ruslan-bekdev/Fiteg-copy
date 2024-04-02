@@ -1,5 +1,4 @@
 import React from 'react';
-import {recipes} from "../../configs/recipes";
 import styled from "styled-components";
 
 const ItemsContent = styled.div`
@@ -109,19 +108,19 @@ const Caption = styled.div`
   }
 `;
 
-const Items = ({activeCardIndex,activateModal}) => {
+const Items = ({activeCardIndex,activateModal,texts,buttonText}) => {
     return (
         <ItemsContent>
             <span className='recipe__counter counter'>
                 <b>{activeCardIndex+1}</b>
                 <input type="range" disabled
-                       min="0" max={recipes.length-1}
+                       min="0" max={texts.length-1}
                        value={activeCardIndex}
                 />
             </span>
             <div className='images'>
                 {
-                    recipes.map((recipe,index) =>
+                    texts.map((recipe, index) =>
                         <img
                             src={recipe.image}
                             alt={recipe.title}
@@ -132,13 +131,13 @@ const Items = ({activeCardIndex,activateModal}) => {
                 }
             </div>
             <Caption className='caption recipe__caption'>
-                <h3>{recipes[activeCardIndex].title}</h3>
-                <p>{recipes[activeCardIndex].caption}</p>
+                <h3>{texts[activeCardIndex].title}</h3>
+                <p>{texts[activeCardIndex].caption}</p>
                 <span>
                         <b
                             onClick={activateModal}
                         >
-                            Recipe suggestion
+                            {buttonText}
                         </b>
                     </span>
             </Caption>

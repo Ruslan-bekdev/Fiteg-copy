@@ -5,7 +5,7 @@ import ProductMain from "./sections/ProductMain";
 import ProductSecondary from "./sections/ProductSecondary";
 import Marquee from "./sections/Marquee";
 import Recommendations from "./sections/Recommendations";
-import products from "../../configs/products";
+import {useSelector} from "react-redux";
 
 const Product = styled.main`
   padding-top: 8vh;
@@ -48,6 +48,7 @@ const Back = styled.div`
 `;
 
 const ProductPage = ({windowWidth}) => {
+    const {productPage,products} = useSelector(state => state.languageTextSlice.config);
     const {id} = useParams();
     const navigate = useNavigate();
 
@@ -63,7 +64,7 @@ const ProductPage = ({windowWidth}) => {
         <Product>
             <Back>
                 <NavLink to='/'>
-                    {'< Назад'}
+                    {'< '+productPage.backButtonText}
                 </NavLink>
             </Back>
             <ProductMain
@@ -73,9 +74,12 @@ const ProductPage = ({windowWidth}) => {
             <ProductSecondary
                 product={products[id]}
             />
-            <Marquee/>
+            <Marquee
+                texts={productPage.marquee}
+            />
             <Recommendations
                 products={products}
+                title={productPage.recommendationText}
                 id={id}
                 toProductLink={toProductLink}
             />

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styled from "styled-components";
-import products from "../../configs/products";
+import products_eng from "../../configs/products/products_eng";
 import {useNavigate} from "react-router-dom";
 
 const Items = styled.div`
@@ -79,7 +79,7 @@ const MenuItemsList = ({deactivateMenu,menuActiveStatus}) => {
     return (
         <Items className={menuActiveStatus ?'menu_showed' :''}>
             {
-                products.map((product,index) =>
+                products_eng.map((product, index) =>
                     <div
                         className='menu__item'
                         style={{

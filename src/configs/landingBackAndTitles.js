@@ -6,7 +6,7 @@ import back5 from '../assets/landing/back5.jpg';
 import back6 from '../assets/landing/back6.jpg';
 import back7 from '../assets/landing/back7.jpg';
 
-const titleAndBackConfig = {
+export const titleAndBack_eng = {
     default: 'EVERYONE',
     variants: [
         {
@@ -38,6 +38,47 @@ const titleAndBackConfig = {
             back: back7
         },
     ],
+    otherTitles:[
+        'Cage-Free Egg',
+        'Protein Smoothies',
+        'for'
+    ],
 };
-
-export default titleAndBackConfig;
+export const titleAndBack_ru = {
+    default: 'ВСЕХ',
+    variants: [
+        {
+            title: 'пожилых людей',
+            back: back1,
+        },
+        {
+            title: 'активных молодых матерей',
+            back: back2,
+        },
+        {
+            title: 'молодых душ',
+            back: back3,
+        },
+        {
+            title: 'любителей ЗОЖ',
+            back: back4,
+        },
+        {
+            title: 'выносливых спортсменов',
+            back: back5,
+        },
+        {
+            title: 'любителей фитнеса',
+            back: back6,
+        },
+        {
+            title: 'сторонников благополучия',
+            back: back7
+        },
+    ],
+    otherTitles:[
+        'Яйца без клеток',
+        'Протеиновые смузи',
+        'для'
+    ],
+};

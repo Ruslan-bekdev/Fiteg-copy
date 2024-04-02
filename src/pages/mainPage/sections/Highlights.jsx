@@ -11,7 +11,7 @@ const HighlightsContent = styled.section`
   }
 `;
 
-const Highlights = ({windowHeight}) => {
+const Highlights = ({windowHeight,texts}) => {
     const handleScrollCardBackAnimation = () => {
         const cards = document.querySelectorAll('.card_parallaxBack');
         const windowPositionY = window.scrollY;
@@ -27,8 +27,10 @@ const Highlights = ({windowHeight}) => {
 
     return (
         <HighlightsContent className='container'>
-            <h2>Highlights</h2>
-            <Cards/>
+            <h2>{texts.title}</h2>
+            <Cards
+                texts={texts.cards}
+            />
         </HighlightsContent>
     );
 };

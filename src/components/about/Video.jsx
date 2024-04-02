@@ -6,7 +6,7 @@ const VideoContent = styled.div`
   flex-grow: 1;
   height: fit-content;
   position: sticky;
-  top: 64px;
+  top: 4vh;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@ const VideoContent = styled.div`
     max-height: 40vh;
     object-fit: contain;
     border-radius: calc(.9875rem + 1.86275vw);
-    transition: .2s ease-in-out;
+    transition: scale .2s ease-in-out;
 
     @media (hover: hover) {
       &:hover{
@@ -70,7 +70,6 @@ const VideoContent = styled.div`
 
   @media (max-width: 740px) {
     width: fit-content;
-    top: 0;
     left: 100%;
     
     img{
@@ -79,7 +78,7 @@ const VideoContent = styled.div`
   }
 `;
 
-const Video = ({videoLink}) => {
+const Video = ({videoLink,buttonText}) => {
     return (
         <VideoContent>
             <img
@@ -91,9 +90,7 @@ const Video = ({videoLink}) => {
                 target='_blank'
                 className='videoLink'
             >
-                <b>
-                    Watch video
-                </b>
+                <b>{buttonText}</b>
             </a>
         </VideoContent>
     );

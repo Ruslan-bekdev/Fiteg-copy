@@ -1,6 +1,5 @@
 import React, {Fragment, useEffect} from 'react';
 import styled from "styled-components";
-import {marquee_product} from "../../../configs/marquee";
 
 const MarqueeContent = styled.div`
   width: 100vw;
@@ -37,10 +36,10 @@ const MarqueeContent = styled.div`
   }
 `;
 
-const Marquee = () => {
+const Marquee = ({texts}) => {
     const marqueeImgHeight = 5;
     const marqueeSpanMargin = 1.4;
-    const marqueeArray = Object.entries(marquee_product);
+    const marqueeArray = Object.entries(texts);
     const marqueeElementsCount = marqueeArray.length;
 
     const animateMarquee = () => {
@@ -73,7 +72,7 @@ const Marquee = () => {
     const marqueeAnimationSpeed = 40;
 
     const renderMarqueeContent = () =>
-        marquee_product.map((item, index) =>
+        texts.map((item, index) =>
             <Fragment key={index}>
                 <img
                     src={item.svg} alt=""

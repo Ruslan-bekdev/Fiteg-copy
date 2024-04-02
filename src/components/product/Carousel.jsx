@@ -1,14 +1,15 @@
-import React, {useRef,useState,useEffect} from 'react';
+import React, {useRef,useState,useEffect,Fragment} from 'react';
 import styled from "styled-components";
 
 const CarouselContent = styled.div`
   flex-grow: 1;
-  height: 100%;
   max-width: 40%;
-  overflow: hidden;
   
   &>div{
+    max-height: 80%;
     border-radius: calc(.9875rem + 1.86275vw);
+    position: sticky;
+    top: 5dvh;
     overflow: hidden;
   }
 
@@ -32,7 +33,10 @@ const CarouselContent = styled.div`
   }
 
   @media (max-width: 740px) {
-    max-width: none;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin-inline: auto;
   }
 `;
 
@@ -41,25 +45,24 @@ const Carousel = ({images}) => {
     const containerRef = useRef();
     const [current, setCurrent] = useState(0);
     const [translateX, setTranslateX] = useState(0);
-    const autoScrollInterval = 3000;
+    const autoScrollInterval = 2000;
 
     const nextCurr = () => {
         setCurrent((prev) => prev + 1);
     };
 
     useEffect(() => {
+        containerRef.current.style.transitionDuration = '0s';
         if (current === images.length) {
-            containerRef.current.style.transitionDuration = '0s';
             setTimeout(()=>{
                 setCurrent(0);
             },200);
         }
         if (current === 0) {
-            containerRef.current.style.transitionDuration = '0s';
             setTranslateX(containerRef.current.clientWidth * current);
         }
         else {
-            containerRef.current.style.transitionDuration = '.2s';
+            containerRef.current.style.transitionDuration = '.3s';
             setTranslateX(containerRef.current.clientWidth * current);
         }
     }, [current]);
@@ -88,7 +91,7 @@ const Carousel = ({images}) => {
                     {
                         images.map((image,index)=> {
                             return(
-                                <>
+                                <Fragment key={index}>
                                     <li>
                                         <img
                                             src = {image}
@@ -105,7 +108,7 @@ const Carousel = ({images}) => {
                                         </li>
                                         :''
                                     }
-                                </>
+                                </Fragment>
                             )
                         })
                     }

@@ -1,14 +1,12 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import styled from "styled-components";
 import Accordion from "../../../components/product/Accordion";
 
 const Main = styled.section`
-  width: 100%;
+  width: 98vw;
   max-width: 1920px;
   min-height: auto;
   margin-block: 0;
-  margin-inline: auto;
-  padding-inline: 4vw;
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -22,7 +20,7 @@ const Main = styled.section`
   }
   
   h1{
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .nutritionalInfo {
@@ -67,7 +65,14 @@ const Main = styled.section`
   }
   
   @media (max-width: 740px) {
+    width: 90vw;
+    max-width: 480px;
     flex-direction: column;
+    text-align: center;
+    
+    .nutritionalInfo{
+      margin-inline: auto;
+    }
 
     &>div{
       width: 100%;
@@ -75,6 +80,10 @@ const Main = styled.section`
       &:first-child{
         padding-right: 0;
       }
+    }
+    
+    p{
+      margin-block: 7%;
     }
   }
 `;
@@ -107,7 +116,7 @@ const ProductMain = ({windowWidth,product}) => {
                 <h1>{product.name}</h1>
                 <div className='nutritionalInfo'>
                     {product.nutritionalInformation.map((item,index) =>
-                        <>
+                        <Fragment key={index}>
                             {index !== 0 && <hr/>}
                             <div className='nutritionalInfo__content'>
                                 <h3>
@@ -118,7 +127,7 @@ const ProductMain = ({windowWidth,product}) => {
                                     {item.underText}
                                 </span>
                             </div>
-                        </>
+                        </Fragment>
                     )}
                 </div>
                 <p>{product.description}</p>

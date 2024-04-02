@@ -1,7 +1,7 @@
 import React from 'react';
-import products from "../../configs/products";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const ProductsContent = styled.div`
   width: 100%;
@@ -219,6 +219,7 @@ const ProductsContent = styled.div`
 
 const Products = ({animatedStatus,isMobile}) => {
     const navigate = useNavigate();
+    const productsConfig = useSelector(state => state.languageTextSlice.config.products);
 
     const toProductPage = ({id}) => {
         navigate(`/product/${id}`)
@@ -228,7 +229,7 @@ const Products = ({animatedStatus,isMobile}) => {
         <ProductsContent
             className={isMobile ?'mobile' :'desktop'}
         >
-            {products.map((product, index) =>
+            {productsConfig.map((product, index) =>
                 <div
                     className='product catalog__product'
                     key={index}

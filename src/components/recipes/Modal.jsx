@@ -1,5 +1,4 @@
-import React from 'react';
-import {recipes} from "../../configs/recipes";
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 
 const Overlay = styled.div`
@@ -54,8 +53,15 @@ const ModalContent = styled.div`
   }
 `;
 
-const Modal = ({index,isModalActive,deactivateModal}) => {
-    const contentConfig = recipes[index].content;
+const Modal = ({texts,index,isModalActive,deactivateModal}) => {
+    const contentConfig = texts[index].content;
+    useEffect(() => {
+        document.body.style.overflow = isModalActive?'hidden':'auto';
+
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isModalActive]);
 
     return !isModalActive ?'' :(
         <>
@@ -67,12 +73,15 @@ const Modal = ({index,isModalActive,deactivateModal}) => {
                 </h4>
                 {
                     Object.entries(contentConfig.lists).map(([key,value],index) =>
-                        <div className={index === 1 ?'numbered' :''}>
+                        <div
+                            className={index === 1 ?'numbered' :''}
+                            key={index}
+                        >
                             <h5>{key}</h5>
                             <ul>
                                 {
-                                    value.map((item)=>
-                                        <li>{item}</li>
+                                    value.map((item,index)=>
+                                        <li key={index}>{item}</li>
                                     )
                                 }
                             </ul>

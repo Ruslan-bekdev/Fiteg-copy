@@ -24,8 +24,10 @@ const Accordion = ({nutritionFacts,ingredients}) => {
                     <h2>{nutritionFacts.title}</h2>
                 </summary>
                 {
-                    Object.entries(nutritionFacts.content).map(([key,value]) =>
-                        <p>{key + ' - ' + value}</p>
+                    nutritionFacts.content.map((texts,index)=>
+                        texts[0] === texts[1]
+                            ?<br/>
+                            :<p key={index}>{texts[0] + (texts[0] === '*' ?' ' :' - ') + texts[1]}</p>
                     )
                 }
             </details>
@@ -34,8 +36,10 @@ const Accordion = ({nutritionFacts,ingredients}) => {
                     <h2>{ingredients.title}</h2>
                 </summary>
                 {
-                    ingredients.content.map((value) =>
-                        <p>{value}</p>
+                    ingredients.content.map((value,index) =>
+                        value === " "
+                            ?<br/>
+                            :<p key={index}>{value}</p>
                     )
                 }
             </details>

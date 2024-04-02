@@ -3,13 +3,10 @@ import styled from "styled-components";
 import Carousel from "../../../components/product/Carousel";
 
 const Secondary = styled.section`
-  width: 100%;
+  width: 98vw;
   max-width: 1740px;
-  min-height: auto;
-  padding-inline: 4vw;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   box-sizing: border-box;
   gap: 2%;
   position: relative;
@@ -18,21 +15,22 @@ const Secondary = styled.section`
     width: 85vw;
     margin-inline: auto;
   }
-
+  
   @media (max-width: 740px) {
+    width: 90vw;
     gap: 0;
     flex-direction: column;
+    min-height: auto;
   }
 `;
 const Caption = styled.div`
   width: 60%;
-  height: min-content;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   div{
-    width: 45%;
+    width: 55%;
     text-align: left;
     h3{
       font-size: 2rem;
@@ -44,17 +42,26 @@ const Caption = styled.div`
       transform: translateX(-100%);
     }
   }
-
+  
   @media (max-width: 740px) {
+    div{
+      width: 50%;
+      text-align: right;
+      &:nth-of-type(2n){
+        text-align: left;
+      }
+    }
+  }
+  @media (max-width: 1230px) {
     width: 100%;
     margin-top: 5%;
     div{
-      width: 70%;
-        h3{
-          font-size: 2rem !important;
-          margin-bottom: 2rem !important;
-          margin-top: 3rem;
-        }
+      width: 80%;
+      h3{
+        font-size: 2rem !important;
+        margin-bottom: 2rem !important;
+        margin-top: 3rem;
+      }
     }
   }
 `;
@@ -67,8 +74,8 @@ const ProductTest = ({product}) => {
             />
             <Caption>
                 {
-                    product.features.map((feature)=>
-                        <div>
+                    product.features.map((feature,index)=>
+                        <div key={index}>
                             <h3>{feature.title}</h3>
                             <p>{feature.caption}</p>
                         </div>

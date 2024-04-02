@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const landingSlice = createSlice({
-    name: 'landingSlice',
+const landingBackSlice = createSlice({
+    name: 'landingBackSlice',
     initialState:{
         isBackActive: false,
     },
@@ -12,6 +12,6 @@ const landingSlice = createSlice({
     },
 });
 
-export const {setBackActiveStatus} = landingSlice.actions;
+export const {setBackActiveStatus} = landingBackSlice.actions;
 
-export default landingSlice.reducer;
+export default landingBackSlice.reducer;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import products from "../../../configs/products";
+import products_eng from "../../../configs/products/products_eng";
 import Products from "../../../components/catalog/Products";
 import Marquee from "../../../components/catalog/Marquee";
 
@@ -13,7 +13,7 @@ const CatalogContent = styled.section`
   }
 `;
 
-const Catalog = ({isMobile,windowHeight}) => {
+const Catalog = ({isMobile,windowHeight,texts}) => {
     const [animatedStatus,setAnimatedStatus] = useState(false);
 
     const handleScrollMarqueeAnimation = () => {
@@ -34,9 +34,9 @@ const Catalog = ({isMobile,windowHeight}) => {
             setAnimatedStatus(true);
 
         productElements.forEach((product, index) => {
-            if (products[index].positions.parallaxDivide) {
+            if (products_eng[index].positions.parallaxDivide) {
                 product.style.transform = `translateY(-${windowPositionY /
-                products[index].positions.parallaxDivide/2}dvh)`;
+                products_eng[index].positions.parallaxDivide/2}dvh)`;
             }
         });
     };
@@ -49,7 +49,9 @@ const Catalog = ({isMobile,windowHeight}) => {
 
     return (
         <CatalogContent>
-            <Marquee/>
+            <Marquee
+                texts={texts.marquee}
+            />
             <Products
                 animatedStatus={animatedStatus}
                 isMobile={isMobile}

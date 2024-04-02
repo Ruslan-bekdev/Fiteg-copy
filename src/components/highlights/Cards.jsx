@@ -46,7 +46,6 @@ const CardsContent = styled.div`
       font-size: 2rem;
       line-height: 3rem;
       margin-bottom: .4rem;
-      white-space: nowrap;
     }
     p{
       font-size: 1.2rem;
@@ -62,7 +61,7 @@ const CardsContent = styled.div`
       }
       h3{
         font-size: 3rem;
-        white-space: normal;
+        margin-bottom: .8rem;
       }
     }
   }
@@ -84,7 +83,7 @@ const CardsContent = styled.div`
   }
 `;
 
-const Cards = () => {
+const Cards = ({texts}) => {
     return (
         <CardsContent>
             <div
@@ -99,10 +98,8 @@ const Cards = () => {
                     src={card4_cpap} alt=""
                     className='card4__img'
                 />
-                <h3>Eco-Friendly Packaging</h3>
-                <p>
-                    Packaged in recyclable materials to support environmental sustainability
-                </p>
+                <h3>{texts[0].title}</h3>
+                <p>{texts[0].caption}</p>
             </div>
             <div
                 className='card'
@@ -115,10 +112,8 @@ const Cards = () => {
                     src={title2} alt=""
                     className='card2__img'
                 />
-                <h3>Natural Flavors</h3>
-                <p>
-                    Made with pure, natural ingredients for a genuine taste experience
-                </p>
+                <h3>{texts[1].title}</h3>
+                <p>{texts[1].caption}</p>
             </div>
             <div
                 className='card'
@@ -127,10 +122,8 @@ const Cards = () => {
                     backgroundColor: '#fac36c',
                 }}
             >
-                <h3>Refined Taste</h3>
-                <p>
-                    Smooth texture without the strong taste of eggs
-                </p>
+                <h3>{texts[2].title}</h3>
+                <p>{texts[2].caption}</p>
             </div>
             <div
                 className='card card_parallaxBack'
@@ -139,11 +132,8 @@ const Cards = () => {
                     backgroundColor: '#a0cd5f',
                 }}
             >
-                <h3>Ready-to-Drink</h3>
-                <p>
-                    Convenient for on-the-go consumption with no preparation needed.
-                    Just shake well before use!
-                </p>
+                <h3>{texts[3].title}</h3>
+                <p>{texts[3].caption}</p>
             </div>
         </CardsContent>
     );

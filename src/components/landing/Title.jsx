@@ -16,7 +16,7 @@ const TitleContent = styled.div`
       flex-direction: column;
     }
     font-size: 3rem;
-    text-align: left;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -78,19 +78,19 @@ const TitleContent = styled.div`
   }
 `;
 
-const Title = ({title,isBackActive,startInterval,stopInterval}) => {
+const Title = ({title,texts,isBackActive,startInterval,stopInterval}) => {
     return (
         <TitleContent className={`container landing__title ${isBackActive ?'title_light' :''}`}>
             <h2>
-                <b>Cage-Free Egg</b>
+                <b>{texts.otherTitles[0]}</b>
                 <img src={title1} alt=""/>
             </h2>
             <h2>
-                <b>Protein Smoothies</b>
+                <b>{texts.otherTitles[1]}</b>
                 <img src={title2} alt=""/>
             </h2>
             <h2>
-                <b>for</b>
+                <b>{texts.otherTitles[2]}</b>
                 {isBackActive
                     ?<span
                         onClick={stopInterval}

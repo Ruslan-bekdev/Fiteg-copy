@@ -8,6 +8,7 @@ import Header from "./layout/header/Header";
 import Footer from "./layout/footer/Footer";
 import MainPage from "./pages/mainPage/MainPage";
 import ProductPage from "./pages/productPage/ProductPage";
+import {useSelector} from "react-redux";
 
 const AppContent = styled.div`
   position: relative;
@@ -54,6 +55,7 @@ const Wrapper = styled.div`
   }
 
   &>.content {
+    width: 100vw;
     position: relative;
     z-index: 2;
     display: inline-block;
@@ -70,6 +72,7 @@ const Overlay = styled.div`
 `;
 
 const App = () => {
+    const config = useSelector(state => state.languageTextSlice.config);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [windowHeight, setWindowHeight] = useState(window.innerHeight);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 740);
@@ -89,7 +92,7 @@ const App = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    return(
+    return !config ?<></> :(
         <AppContent
             className={menuActiveStatus ?'active' :''}
         >

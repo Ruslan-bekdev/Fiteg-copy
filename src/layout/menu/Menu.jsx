@@ -1,6 +1,8 @@
 import React, {useEffect,useState} from 'react';
 import styled from "styled-components";
 import MenuItemsList from "./MenuItemsList";
+import {useDispatch, useSelector} from "react-redux";
+import {setNextLanguage} from "../../store/languageTextSlice";
 
 const MenuContent = styled.div`
   *{
@@ -16,20 +18,24 @@ const MenuContent = styled.div`
 
   .menu__header {
     height: 6vh;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: end;
 
     span {
-      padding: .6rem 1.8rem;
+      max-height: 100%;
+      padding: .6rem 1.2rem;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: calc(.9875rem + 1.86275vw);
-      background-color: #f2f3f4;
+      background-color: #ffc857;
       cursor: pointer;
+      box-sizing: border-box;
+      
       @media (hover: hover) {
+        background-color: #f2f3f4;
         &:hover {
           background-color: #ffc857;
         }
@@ -39,6 +45,8 @@ const MenuContent = styled.div`
 `;
 
 const Menu = ({deactivateMenu,menuActiveStatus}) => {
+    const dispatch = useDispatch();
+    const languageText = useSelector(state => state.languageTextSlice.language);
     const [paddingSetStatus, setPaddingSetStatus] = useState(false);
 
     const updatePadding = () => {
@@ -78,8 +86,8 @@ const Menu = ({deactivateMenu,menuActiveStatus}) => {
     return (
         <MenuContent className='menu'>
             <div className='menu__header'>
-                <span>
-                    <b>Язык</b>
+                <span onClick={()=>dispatch(setNextLanguage())}>
+                    <b>{languageText}</b>
                 </span>
             </div>
             <MenuItemsList

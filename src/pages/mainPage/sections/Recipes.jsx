@@ -12,7 +12,7 @@ const RecipesContent = styled.section`
   }
 `;
 
-const Recipes = ({windowHeight}) => {
+const Recipes = ({windowHeight,texts}) => {
     const cardTopPosition = Math.floor(windowHeight/100*10);
     const cardMargin = Math.floor(windowHeight/100);
 
@@ -62,12 +62,15 @@ const Recipes = ({windowHeight}) => {
 
     return (
         <RecipesContent className='container'>
-            <h2>Ways to use</h2>
+            <h2>{texts.title}</h2>
             <Items
                 activeCardIndex={activeCardIndex}
                 activateModal={activateModal}
+                texts={texts.cards}
+                buttonText={texts.buttonText}
             />
             <Modal
+                texts={texts.cards}
                 index={activeCardIndex}
                 isModalActive={isModalActive}
                 deactivateModal={deactivateModal}

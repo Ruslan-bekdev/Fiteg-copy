@@ -2,10 +2,9 @@ import React from 'react';
 import styled from "styled-components";
 
 const RecommendationsContent = styled.section`
-  width: 100%;
+  width: 98vw;
   max-width: 1740px;
   min-height: auto;
-  padding-inline: 4vw;
   margin-bottom: 5rem;
   box-sizing: border-box;
   
@@ -18,6 +17,10 @@ const RecommendationsContent = styled.section`
   @media (min-width: 1230px) {
     width: 85vw;
     margin-inline: auto;
+  }
+  @media (max-width: 740px) {
+    width: 90vw;
+    max-width: 480px;
   }
 `;
 const ProductList = styled.div`
@@ -71,10 +74,10 @@ const ProductList = styled.div`
   }
 `;
 
-const Recommendations = ({products,id,toProductLink}) => {
+const Recommendations = ({products,title,id,toProductLink}) => {
     return (
         <RecommendationsContent>
-            <h2>Next up</h2>
+            <h2>{title}</h2>
 
             <ProductList>
                 {
@@ -83,6 +86,7 @@ const Recommendations = ({products,id,toProductLink}) => {
                             ? ''
                             : <div
                                 style={{backgroundColor: product.color}}
+                                key={index}
                             >
                                 <div
                                     onClick={()=>toProductLink({id:index})}
