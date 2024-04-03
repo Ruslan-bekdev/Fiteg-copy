@@ -8,6 +8,7 @@ import Footer from "../layout/footer/Footer";
 import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 import {setDefaultLanguage} from "../store/languageTextSlice";
+import {defaultLanguage} from "../configs";
 
 const AppStyled = styled.div`
   position: relative;
@@ -89,7 +90,7 @@ const AppContent = () => {
     };
     const getConfigFromLocalStorage = () => {
         const storedConfig = localStorage.getItem('config');
-        return storedConfig ?JSON.parse(storedConfig) :config;
+        return storedConfig ?JSON.parse(storedConfig) :defaultLanguage;
     };
 
     const handleResize = () => {
