@@ -44,7 +44,7 @@ const Items = styled.div`
     }
   }
   &.menu_showed>div {
-    animation: move .6s ease-in-out;
+    animation: move .5s ease-in-out;
   }
 
   @keyframes move {
@@ -87,7 +87,7 @@ const MenuItemsList = ({deactivateMenu,menuActiveStatus}) => {
                             top: `${cardMargin * index}px`,
                             zIndex: 10 * index,
                             animationDelay: `${index * .1}s`,
-                            '--offset': `${15 + index * 15}`,
+                            '--offset': `${9 + index * 9}`,
                         }}
                         key={index}
                         onClick={()=>toProductPage({id: index})}

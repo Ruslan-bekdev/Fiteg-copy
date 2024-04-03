@@ -1,11 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
-import languages, {ru} from "../configs";
+import languages from "../configs";
 
 const languageTextSlice = createSlice({
     name: 'languageTextSlice',
     initialState:{
-        config: ru,
-        language: ru.languageText,
+        config: null,
+        language: null,
     },
     reducers: {
         setNextLanguage: (state) => {
@@ -22,10 +22,17 @@ const languageTextSlice = createSlice({
                     break;
                 }
             }
-        }
+        },
+        setDefaultLanguage: (state,action) => {
+            state.config = action.payload;
+            state.language = action.payload.languageText;
+        },
     },
 });
 
-export const {setNextLanguage} = languageTextSlice.actions
+export const {
+    setNextLanguage,
+    setDefaultLanguage,
+} = languageTextSlice.actions
 
 export default languageTextSlice.reducer;

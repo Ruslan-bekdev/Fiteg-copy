@@ -182,7 +182,7 @@ const Social = ({windowWidth, windowHeight,roundedText}) => {
                     width: `45${isWindowHorizontal ?'vw' :'dvh'}`,
                     maxWidth: `45${isWindowHorizontal ?'dvh' :'vw'}`
                 }}
-                onClick={()=>alert('Имитация ссылки на Инстаграм')}
+                onClick={()=>window.open('https://www.instagram.com/', '_blank')}
             >
                 <img
                     style={{width: '15%'}}

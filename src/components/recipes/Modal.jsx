@@ -34,14 +34,14 @@ const ModalContent = styled.div`
   scrollbar-width: none;
   
   h4{
-    font-size: 5vw;
+    font-size: 2.8rem;
   }
   h5{
-    font-size: 2.5vw;
+    font-size: 1.5rem;
     margin-block: 2vw 1.7vw;
   }
   li{
-    font-size: 2vw;
+    font-size: 1.2rem;
     margin-left: 3vw;
   }
   .numbered ul{
