@@ -5,7 +5,7 @@ const RecommendationsContent = styled.section`
   width: 98vw;
   max-width: 1740px;
   min-height: auto;
-  margin-bottom: 10rem;
+  margin-bottom: 10%;
   
   h2{
     text-align: center;
@@ -20,6 +20,7 @@ const RecommendationsContent = styled.section`
   @media (max-width: 740px) {
     width: 90vw;
     max-width: 480px;
+    margin-bottom: 20%;
   }
 `;
 const ProductList = styled.div`
@@ -94,7 +95,7 @@ const Recommendations = ({products,title,id,toProductLink}) => {
                                 >
                                     <img src={product.images.main} alt=""/>
                                 </div>
-                                <h3>{product.name}</h3>
+                                {/*<h3>{product.name}</h3>*/}
                             </div>
                     )
                 }
