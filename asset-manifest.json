@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Fiteg-copy/static/css/main.3bf08c91.css",
-    "main.js": "/Fiteg-copy/static/js/main.e71c64cd.js",
+    "main.js": "/Fiteg-copy/static/js/main.785d0508.js",
     "static/media/spongeTexture.png": "/Fiteg-copy/static/media/spongeTexture.a2217edd1e5d5a4cba7e.png",
     "static/media/back6.jpg": "/Fiteg-copy/static/media/back6.1b6b889d36b27e884494.jpg",
     "static/media/back7.jpg": "/Fiteg-copy/static/media/back7.7f91ea20db22fffc351d.jpg",
@@ -40,10 +40,10 @@
     "static/media/instagram.svg": "/Fiteg-copy/static/media/instagram.4310cc8ff0fd559823ca27583805958d.svg",
     "index.html": "/Fiteg-copy/index.html",
     "main.3bf08c91.css.map": "/Fiteg-copy/static/css/main.3bf08c91.css.map",
-    "main.e71c64cd.js.map": "/Fiteg-copy/static/js/main.e71c64cd.js.map"
+    "main.785d0508.js.map": "/Fiteg-copy/static/js/main.785d0508.js.map"
   },
   "entrypoints": [
     "static/css/main.3bf08c91.css",
-    "static/js/main.e71c64cd.js"
+    "static/js/main.785d0508.js"
   ]
 }
