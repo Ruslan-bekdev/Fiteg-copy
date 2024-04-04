@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 const FooterContent = styled.footer`
   width: 100vw;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   padding: 2.5vw 2vw;

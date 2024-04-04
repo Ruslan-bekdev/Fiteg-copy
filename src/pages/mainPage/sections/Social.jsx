@@ -65,8 +65,9 @@ const SocialContent = styled.section`
     }
   }
   
-  @media (max-width: 740px) and (min-height: 740px){
-    min-height: calc(60 * var(--rem));
+  @media (max-width: 740px){
+    height: 60vh;
+    min-height: 150px;
   }
   @media (min-width: 740px) and (max-width: 1230px){
     height: calc(38 * var(--rem));
