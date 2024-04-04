@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import logo from "../../assets/footer/logo.svg";
 import {Link} from "react-router-dom";
@@ -22,10 +22,7 @@ const FooterContent = styled.footer`
   }
 
   @media (max-width: 740px) {
-    padding: 2.5vw 4vw;
-    &>b, &>b *{
-      font-size: 2.2vw;
-    }
+    display: none;
   }
 `;
 
