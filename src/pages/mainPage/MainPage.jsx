@@ -43,7 +43,6 @@ const MainPage = ({isMobile,windowWidth,windowHeight}) => {
             <Social
                 windowWidth={windowWidth}
                 windowHeight={windowHeight}
-                roundedText={textConfig.socialRoundedText}
             />
         </Main>
     );

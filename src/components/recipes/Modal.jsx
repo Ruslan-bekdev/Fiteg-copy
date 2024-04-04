@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Overlay = styled.div`
   width: 100vw;
-  height: 100dvh;
+  height: 100vh;
   position: fixed;
   display: none;
   top: 0;
@@ -17,7 +17,7 @@ const Overlay = styled.div`
 `;
 const ModalContent = styled.div`
   max-width: 100%;
-  height: 90dvh;
+  height: 90vh;
   box-sizing: border-box;
   position: fixed;
   top: 50%;

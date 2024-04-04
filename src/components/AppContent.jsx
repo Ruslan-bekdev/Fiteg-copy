@@ -44,7 +44,7 @@ const AppStyled = styled.div`
 `;
 const Wrapper = styled.div`
   width: 100vw;
-  min-height: 100dvh;
+  min-height: 100vh;
   position: relative;
   z-index: 1;
   background-color: #fdfdfd;
@@ -63,7 +63,7 @@ const Wrapper = styled.div`
 `;
 const Overlay = styled.div`
   width: 100vw;
-  height: 100dvh;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;

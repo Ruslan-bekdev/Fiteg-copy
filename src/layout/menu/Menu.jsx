@@ -8,7 +8,7 @@ const MenuContent = styled.div`
   *{
     color: #0e0f19;
   }
-  height: 100dvh;
+  height: 100vh;
   width: 100%;
   position: relative;
   top: 0;

@@ -177,7 +177,7 @@ const ProductsContent = styled.div`
   &.mobile{
     display: flex;
     flex-direction: column;
-    gap: 5dvh;
+    gap: 5vh;
     padding-bottom: 12rem;
 
     .product {
@@ -239,7 +239,7 @@ const Products = ({animatedStatus,isMobile}) => {
                         style={{
                             animationDelay: `${index / 4}s`,
                             '--color': product.color,
-                            '--top': `${!isMobile ? (product.positions.top_catalog / 1.5) : ''}dvh`,
+                            '--top': `${!isMobile ? (product.positions.top_catalog / 1.5) : ''}vh`,
                             '--rotate': `${product.positions.rotate_catalog}deg`,
                         }}
                         onClick={()=>toProductPage({id: index})}

@@ -33,7 +33,7 @@ const ItemsContent = styled.div`
   }
 
   .images {
-    gap: 4dvh;
+    gap: 4vh;
     display: flex;
     flex-direction: column;
 

@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import spongeTexture from "../../../assets/social/spongeTexture.png";
 import instagram from "../../../assets/social/instagram.svg";
+import Smile from "../../../components/social/Smile";
 
 const SocialContent = styled.section`
   width: 100vw;
-  max-height: 100dvh;
+  max-height: 100vh;
   background-color: #fdc757;
   position: relative;
   margin-top: 0;
@@ -21,6 +22,15 @@ const SocialContent = styled.section`
     transform: translate(-50%, -50%);
     border-radius: 50%;
     cursor: pointer;
+
+    @media (hover: hover) {
+      &:hover .lol{
+        transform: translate(-5%) rotate(5deg) scale(1.1);
+      }
+      &:hover>img{
+        transform: translate(-50%, -50%) scale(1.3);
+      }
+    }
     
     img {
       width: 2vw;
@@ -30,26 +40,14 @@ const SocialContent = styled.section`
       left: 50%;
       transform: translate(-50%, -50%);
       opacity: 0;
-      transition: opacity .3s ease-in-out;
-    }
-
-    .svg_text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: 40s svgRotation infinite linear;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity .3s ease-in-out;
-      transition-delay: .3s;
+      transition: .3s ease-in-out;
     }
     
     &.showed {
       img{
         opacity: 1;
       }
-      .svg_text{
+      .roundedText{
         opacity: 1;
       }
       .smile{
@@ -57,7 +55,7 @@ const SocialContent = styled.section`
       }
     }
     
-    @keyframes svgRotation {
+    @keyframes textRotation {
       0%{
         transform: translate(-50%, -50%) rotate(0);
       }
@@ -75,84 +73,9 @@ const SocialContent = styled.section`
   }
 `;
 
-const Smile = styled.div`
-  width: 50%;
-  aspect-ratio: 1;
-  position: absolute;
-  bottom: 0;
-  left: 15%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  transition: .3s ease-in-out;
-  transition-delay: .1s;
-
-  @media (hover: hover) {
-    .item:hover &{
-      transform: translate(-5%) rotate(5deg) scale(1.1);
-    }
-  }
-
-  .smile {
-    width: 40%;
-    height: 12%;
-    position: relative;
-    transform: rotate(20deg) scale(3);
-    opacity: 0;
-    transition: opacity .5s ease-in-out;
-
-    &__main {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-
-      & > div {
-        width: 100%;
-        height: 300%;
-        border-radius: 50%;
-        background-color: transparent;
-        border: .2vw #000 solid;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        box-sizing: border-box;
-      }
-    }
-
-    &__side_left, .smile__side_right {
-      width: 1vw;
-      aspect-ratio: 5;
-      background-color: #000;
-      border-radius: calc(.9875rem + 1.86275vw);
-      position: absolute;
-      top: 0;
-      box-sizing: border-box;
-    }
-
-    &__side_left {
-      transform: translate(-8%, -50%) rotate(-24deg);
-    }
-
-    &__side_right {
-      right: 0;
-      transform: translate(8%, -50%) rotate(16deg);
-    }
-  }
-`;
-
-const Social = ({windowWidth, windowHeight,roundedText}) => {
+const Social = ({windowWidth, windowHeight}) => {
     const [isWindowHorizontal,setIsWindowHorizontal] = useState(windowWidth > windowHeight);
     const [itemAnimStatus,setItemAnimStatus] = useState(false);
-    const getRoundedText = (count) => {
-        let text = '';
-        for (let i = 0; i < count; i++) {
-            text += roundedText;
-        }
-
-        return text;
-    }
 
     const handleScrollItemAnim = () => {
         const bodyHeight = document.body.clientHeight;
@@ -179,8 +102,8 @@ const Social = ({windowWidth, windowHeight,roundedText}) => {
                 className={`social__item ${itemAnimStatus ?'showed' :''}`}
                 style={{
                     backgroundImage: `url(${spongeTexture})`,
-                    width: `45${isWindowHorizontal ?'vw' :'dvh'}`,
-                    maxWidth: `45${isWindowHorizontal ?'dvh' :'vw'}`
+                    width: `45${isWindowHorizontal ?'vw' :'vh'}`,
+                    maxWidth: `45${isWindowHorizontal ?'vh' :'vw'}`
                 }}
                 onClick={()=>window.open('https://www.instagram.com/', '_blank')}
             >
@@ -188,58 +111,9 @@ const Social = ({windowWidth, windowHeight,roundedText}) => {
                     style={{width: '15%'}}
                     src={instagram} alt="instagram icon"
                 />
-                <Smile>
-                    <div className="smile">
-                        <div className='smile__main'>
-                            <div
-                                style={{
-                                    border: `.2${isWindowHorizontal ?'dvh' :'vw'} #000 solid`,
-                                }}
-                            />
-                        </div>
-                        <div
-                            style={{width: `1${isWindowHorizontal ?'dvh' :'vw'}`}}
-                            className='smile__side_left'
-                        />
-                        <div
-                            style={{width: `1${isWindowHorizontal ?'dvh' :'vw'}`}}
-                            className='smile__side_right'
-                        />
-                    </div>
-                </Smile>
-
-                <svg
-                    style={{
-                        width: `68${isWindowHorizontal ?'vw' :'dvh'}`,
-                        height: `68${isWindowHorizontal ?'dvh' :'vw'}`,
-                        maxWidth: `100${isWindowHorizontal ?'dvh' :'vw'}`,
-                        maxHeight: `100${isWindowHorizontal ?'vw' :'dvh'}`
-                    }}
-                    className='svg_text'
-                    viewBox="0 0 100 100"
-                    width="100" height="100"
-                >
-                    <defs>
-                        <path id="circle"
-                              d="
-                                        M 50, 50
-                                        m -37, 0
-                                        a 37,37 0 1,1 74,0
-                                        a 37,37 0 1,1 -74,0
-                                    "
-                        />
-                    </defs>
-                    <text
-                        style={{
-                            fontSize: '.17rem',
-                            letterSpacing: '.13rem',
-                        }}
-                    >
-                        <textPath href="#circle">
-                            {getRoundedText(8)}
-                        </textPath>
-                    </text>
-                </svg>
+                <Smile
+                    isWindowHorizontal={isWindowHorizontal}
+                />
             </div>
         </SocialContent>
     );

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Back = styled.div`
   width: 101vw;
-  height: 101dvh;
+  height: 101vh;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -23,11 +23,11 @@ const Back = styled.div`
   @keyframes zoom {
     0% {
       width: 110vw;
-      height: 110dvh;
+      height: 110vh;
     }
     100% {
       width: 101vw;
-      height: 101dvh;
+      height: 101vh;
     }
 `;
 

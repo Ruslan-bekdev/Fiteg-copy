@@ -35,7 +35,7 @@
 }
 
 section {
-    min-height: 100dvh;
+    min-height: 100vh;
     margin-top: 8rem;
     margin-inline: auto;
     box-sizing: border-box;

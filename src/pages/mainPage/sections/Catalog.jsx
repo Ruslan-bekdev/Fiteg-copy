@@ -5,7 +5,7 @@ import Products from "../../../components/catalog/Products";
 import Marquee from "../../../components/catalog/Marquee";
 
 const CatalogContent = styled.section`
-  height: 100dvh;
+  height: 100vh;
   position: relative;
   
   @media (max-width: 740px) {
@@ -36,7 +36,7 @@ const Catalog = ({isMobile,windowHeight,texts}) => {
         productElements.forEach((product, index) => {
             if (products_eng[index].positions.parallaxDivide) {
                 product.style.transform = `translateY(-${windowPositionY /
-                products_eng[index].positions.parallaxDivide/2}dvh)`;
+                products_eng[index].positions.parallaxDivide/2}vh)`;
             }
         });
     };

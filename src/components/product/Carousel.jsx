@@ -9,7 +9,7 @@ const CarouselContent = styled.div`
     max-height: 80%;
     border-radius: calc(.9875rem + 1.86275vw);
     position: sticky;
-    top: 5dvh;
+    top: 5vh;
     overflow: hidden;
   }
 

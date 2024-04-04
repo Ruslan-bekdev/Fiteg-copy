@@ -31,7 +31,6 @@ export const eng = {
         highlights: highlights_eng,
         recipes: recipes_eng,
         about:about_eng,
-        socialRoundedText: 'Have a nice day!',
     },
     productPage:{
         backButtonText: 'Back',
@@ -49,7 +48,6 @@ export const ru = {
         highlights: highlights_ru,
         recipes: recipes_ru,
         about:about_ru,
-        socialRoundedText: 'Хорошего дня!',
     },
     productPage:{
         backButtonText: 'Назад',

@@ -13,12 +13,12 @@ const Items = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding-top: 1rem;
-  gap: 7dvh;
+  gap: 7vh;
   
   .menu__item{
     width: 100%;
     aspect-ratio: 2;
-    max-height: 75dvh;
+    max-height: 75vh;
     background-color: #069c6b;
     border-radius: calc(.9875rem + 1.86275vw);
     position: sticky;
