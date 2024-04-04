@@ -15,12 +15,12 @@ const Main = styled.section`
     width: 50%;
     box-sizing: border-box;
     &:first-child{
-      padding-right: 12%;
+      padding-right: 5%;
     }
   }
   
   h1{
-    font-size: 3rem;
+    font-size: 2.7rem;
   }
 
   .nutritionalInfo {

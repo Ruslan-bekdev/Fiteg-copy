@@ -208,7 +208,7 @@ const ProductsContent = styled.div`
         .product__desc {
           &>h3 {
             color: var(--color);
-            font-size: 3rem;
+            font-size: 2rem;
             text-align: center;
           }
         }

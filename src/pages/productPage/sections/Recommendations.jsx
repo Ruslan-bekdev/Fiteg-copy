@@ -5,8 +5,7 @@ const RecommendationsContent = styled.section`
   width: 98vw;
   max-width: 1740px;
   min-height: auto;
-  margin-bottom: 5rem;
-  box-sizing: border-box;
+  margin-bottom: 10rem;
   
   h2{
     text-align: center;
@@ -37,7 +36,6 @@ const ProductList = styled.div`
     aspect-ratio: 5/3;
     position: relative;
     border-radius: calc(.9875rem + 1.86275vw);
-    margin-bottom: 10%;
     
     &>div{
       width: 100%;
@@ -55,9 +53,12 @@ const ProductList = styled.div`
     }
     
     h3{
+      width: 100%;
+      text-align: center;
+      font-size: 1.5rem;
       position: absolute;
       bottom: 0;
-      transform: translateY(150%);
+      transform: translateY(calc(100% + .5rem));
     }
     
     @media(hover: hover){
@@ -69,7 +70,7 @@ const ProductList = styled.div`
   
   @media (max-width: 740px) {
     h3{
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
   }
 `;

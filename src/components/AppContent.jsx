@@ -76,6 +76,7 @@ const AppContent = () => {
     const config = useSelector(state => state.languageTextSlice.config);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+    const [bodyHeight, setBodyHeight] = useState(document.body.clientHeight);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 740);
     const [menuActiveStatus, setMenuActiveStatus] = useState(false);
 
@@ -94,9 +95,10 @@ const AppContent = () => {
     };
 
     const handleResize = () => {
-        setIsMobile(window.innerWidth <= 740);
         setWindowWidth(window.innerWidth);
         setWindowHeight(window.innerHeight);
+        setBodyHeight(document.body.clientHeight);
+        setIsMobile(window.innerWidth <= 740);
     };
     useEffect(() => {
         dispatch(setDefaultLanguage(getConfigFromLocalStorage()));

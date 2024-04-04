@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import logo from "../../assets/footer/logo.svg";
 import {Link} from "react-router-dom";
 
 const FooterContent = styled.footer`
   width: 100vw;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   padding: 2.5vw 2vw;
@@ -14,6 +14,7 @@ const FooterContent = styled.footer`
   justify-content: space-between;
   box-sizing: border-box;
   z-index: 9998;
+  transition: .2s ease-in-out;
   
   &>b, &>b *{
     color: #000;
