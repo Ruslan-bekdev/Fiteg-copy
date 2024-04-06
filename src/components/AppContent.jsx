@@ -76,7 +76,6 @@ const AppContent = () => {
     const config = useSelector(state => state.languageTextSlice.config);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-    const [bodyHeight, setBodyHeight] = useState(document.body.clientHeight);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 740);
     const [menuActiveStatus, setMenuActiveStatus] = useState(false);
 
@@ -87,17 +86,16 @@ const AppContent = () => {
         setMenuActiveStatus(false);
     };
     const saveConfigToLocalStorage = () => {
-        localStorage.setItem('config', JSON.stringify(config));
+        localStorage.setItem('fiteg-config', JSON.stringify(config));
     };
     const getConfigFromLocalStorage = () => {
-        const storedConfig = localStorage.getItem('config');
+        const storedConfig = localStorage.getItem('fiteg-config');
         return storedConfig ?JSON.parse(storedConfig) :defaultLanguage;
     };
 
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
         setWindowHeight(window.innerHeight);
-        setBodyHeight(document.body.clientHeight);
         setIsMobile(window.innerWidth <= 740);
     };
     useEffect(() => {

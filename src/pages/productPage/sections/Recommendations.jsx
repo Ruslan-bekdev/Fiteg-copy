@@ -95,7 +95,6 @@ const Recommendations = ({products,title,id,toProductLink}) => {
                                 >
                                     <img src={product.images.main} alt=""/>
                                 </div>
-                                {/*<h3>{product.name}</h3>*/}
                             </div>
                     )
                 }
