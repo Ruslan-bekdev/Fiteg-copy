@@ -34,7 +34,6 @@ const ProductsContent = styled.div`
         width: 100%;
         position: absolute;
         bottom: 0;
-        transform: translateY(50%);
 
         .nutritionalInfo {
           width: fit-content;
@@ -42,7 +41,7 @@ const ProductsContent = styled.div`
           display: flex;
           align-items: center;
           background-color: #0e0f19;
-          border-radius: calc(.9875rem + 1.86275vw);
+          border-radius: 2vw;
           color: #fdfdfd;
           margin-inline: auto;
           position: relative;
@@ -60,17 +59,17 @@ const ProductsContent = styled.div`
             flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
-            padding: .4rem .8rem;
+            padding: .4vw 1.2vw;
             
             h3, span {
               line-height: 50%;
               font-weight: bold;
             }
             h3 {
-              font-size: 2.4rem;
+              font-size: 4vw;
             }
             span {
-              font-size: 1rem;
+              font-size: 1vw;
             }
           }
         }
@@ -115,6 +114,7 @@ const ProductsContent = styled.div`
         }
 
         .product__desc {
+          transform: translateY(50%);
           transition: .2s ease-in-out;
 
           .nutritionalInfo {
@@ -206,6 +206,15 @@ const ProductsContent = styled.div`
         }
 
         .product__desc {
+          transform: translateY(25%);
+          .nutritionalInfo__content {
+            h3 {
+              font-size: 3rem;
+            }
+            span {
+              font-size: 1rem;
+            }
+          }
           &>h3 {
             color: var(--color);
             font-size: 2rem;

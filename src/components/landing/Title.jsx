@@ -15,7 +15,7 @@ const TitleContent = styled.div`
       display: flex;
       flex-direction: column;
     }
-    font-size: 3rem;
+    font-size: 2.8rem;
     text-align: center;
     display: flex;
     align-items: center;

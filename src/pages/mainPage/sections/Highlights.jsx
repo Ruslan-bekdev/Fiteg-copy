@@ -14,13 +14,24 @@ const HighlightsContent = styled.section`
 const Highlights = ({windowHeight,texts}) => {
     const handleScrollCardBackAnimation = () => {
         const cards = document.querySelectorAll('.card_parallaxBack');
-        const windowPositionY = window.scrollY;
-        const backPosition = (windowPositionY - windowHeight * 2)/8;
 
-        if (windowPositionY > windowHeight * 3 || !cards) return;
+        if (!cards) return;
 
-        cards.forEach((card)=>{
-            card.style.backgroundPositionY = `${backPosition}%`;
+        cards.forEach((card,index) => {
+            const top = card.getBoundingClientRect().top;
+            const height = card.clientHeight;
+
+            if (top-height > windowHeight) return;
+
+            const backPosition = height/200 * (top/(windowHeight/100));
+
+            index === 0 &&
+            console.log(backPosition)
+
+            if (index === 0)
+                card.style.backgroundPositionY = `${backPosition > 0 ?backPosition :0}px`;
+            else
+                card.style.backgroundPositionY = `${backPosition-height/3}px`;
         });
     };
     window.addEventListener('scroll', handleScrollCardBackAnimation);
