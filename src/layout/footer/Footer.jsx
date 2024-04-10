@@ -68,7 +68,7 @@ const Footer = () => {
                 </b>
             </Logo>
             <b>
-                Website by <Link to='#'>Ruslan</Link>
+                Website by <a href="https://github.com/ruslan-bekdev" target="_blank">Ruslan</a>
             </b>
         </FooterContent>
     );
