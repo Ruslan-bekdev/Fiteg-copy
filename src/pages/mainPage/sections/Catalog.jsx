@@ -3,6 +3,7 @@ import styled from "styled-components";
 import products_eng from "../../../configs/products/products_eng";
 import Products from "../../../components/catalog/Products";
 import Marquee from "../../../components/catalog/Marquee";
+import {useSelector} from "react-redux";
 
 const CatalogContent = styled.section`
   height: 100vh;
@@ -15,6 +16,7 @@ const CatalogContent = styled.section`
 
 const Catalog = ({isMobile,windowHeight,texts}) => {
     const [animatedStatus,setAnimatedStatus] = useState(false);
+    const {theme} = useSelector(state => state.siteThemeSlice);
 
     const handleScrollMarqueeAnimation = () => {
         const element = document.querySelector('.catalog__marquee');
@@ -51,6 +53,7 @@ const Catalog = ({isMobile,windowHeight,texts}) => {
         <CatalogContent>
             <Marquee
                 texts={texts.marquee}
+                theme={theme}
             />
             <Products
                 animatedStatus={animatedStatus}

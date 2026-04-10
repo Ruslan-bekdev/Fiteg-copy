@@ -23,11 +23,12 @@ const MarqueeContent = styled.div`
     align-items: center;
     img{
       aspect-ratio: 1;
+        filter: invert(${({ themeValue }) => themeValue});
     }
   }
 `;
 
-const Marquee = ({texts}) => {
+const Marquee = ({texts, theme}) => {
     const marqueeImgHeight = 5;
     const marqueeSpanMargin = 2;
     const marqueeArray = Object.entries(texts);
@@ -76,7 +77,7 @@ const Marquee = ({texts}) => {
         );
 
     return (
-        <MarqueeContent className='catalog__marquee marquee'>
+        <MarqueeContent themeValue={theme} className='catalog__marquee marquee'>
             <div
                 id='marquee_animated'
                 style={{

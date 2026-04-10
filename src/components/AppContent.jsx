@@ -9,6 +9,8 @@ import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 import {setDefaultLanguage} from "../store/languageTextSlice";
 import {defaultLanguage} from "../configs";
+import logo from "../assets/logo.svg";
+import {setTheme} from "../store/siteThemeSlice";
 
 const AppStyled = styled.div`
   position: relative;
@@ -109,6 +111,19 @@ const AppContent = () => {
     useEffect(() => {
         config && saveConfigToLocalStorage();
     }, [config]);
+
+    useEffect(() => {
+        const check = () => {
+            const attr = document.documentElement.getAttribute('data-darkreader-scheme');
+            dispatch(setTheme({isDark: attr === 'dark'}));
+        };
+
+        const obs = new MutationObserver(check);
+        obs.observe(document.documentElement, { attributes: true });
+
+        check();
+        return () => obs.disconnect();
+    }, []);
 
     return !config ?<></> :(
         <AppStyled

@@ -29,20 +29,18 @@ const Header = ({menuActiveStatus,activateMenu,deactivateMenu}) => {
     const {isBackActive} = useSelector(state => state.landingSlice);
     const location = useLocation();
     const isMainPage = location.pathname === '';
+    const {theme} = useSelector(state => state.siteThemeSlice);
 
     return (
         <HeaderContent>
-            <Logo
-                menuActiveStatus={menuActiveStatus}
-                isBackActive={isBackActive}
-                isMainPage={isMainPage}
-            />
+            <Logo theme={theme}/>
             <Burger
                 menuActiveStatus={menuActiveStatus}
                 activateMenu={activateMenu}
                 deactivateMenu={deactivateMenu}
                 isBackActive={isBackActive}
                 isMainPage={isMainPage}
+                theme={theme}
             />
         </HeaderContent>
     );

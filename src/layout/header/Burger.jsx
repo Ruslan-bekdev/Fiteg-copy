@@ -26,12 +26,14 @@ const MenuBurger = styled.div`
     > div {
       width: 35%;
       height: 35%;
+        background-color: inherit;
 
       > div {
         width: 100%;
         height: 20%;
         border-radius: calc(.9875rem + 1.86275vw);
-        background-color: #fff;
+          background-color: inherit;
+          filter: invert(1);
       }
     }
 
@@ -84,7 +86,7 @@ const MenuBurger = styled.div`
   }
 `;
 
-const Burger = ({activateMenu,deactivateMenu,menuActiveStatus,isBackActive,isMainPage}) => {
+const Burger = ({activateMenu,deactivateMenu,menuActiveStatus,isBackActive,isMainPage,theme}) => {
     return (
         <MenuBurger>
             <div

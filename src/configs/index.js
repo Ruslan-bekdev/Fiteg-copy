@@ -59,6 +59,6 @@ export const ru = {
 };
 
 const languages = [eng,ru];
-export const defaultLanguage = ru;
+export const defaultLanguage = eng;
 
 export default languages;

@@ -9,17 +9,14 @@ const LogoImg = styled.img`
   z-index: 9999;
   pointer-events: auto;
   transition: .2s ease-in-out;
-  
-  &.light{
-    filter: invert(1);
-  }
+    filter: invert(${({ themeValue }) => themeValue});
   
   &.hidden{
     opacity: 0;
   }
 `;
 
-const Logo = ({isBackActive, menuActiveStatus, isMainPage}) => {
+const Logo = ({theme}) => {
     const [logoShowedStatus,setLogoShowedStatus] = useState(true);
 
     const handleShowOrHideLogo = () => {
@@ -34,11 +31,9 @@ const Logo = ({isBackActive, menuActiveStatus, isMainPage}) => {
 
     return (
         <LogoImg
+            themeValue={theme}
             src={logo} alt="fiteg logo"
-            className={`
-                ${logoShowedStatus ?'' :'hidden'}
-                ${isBackActive && !menuActiveStatus && isMainPage ?'light' :''}
-            `}
+            className={logoShowedStatus ?'' :'hidden'}
         />
     );
 };

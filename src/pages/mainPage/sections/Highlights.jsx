@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import Cards from "../../../components/highlights/Cards";
 
@@ -12,29 +12,27 @@ const HighlightsContent = styled.section`
 `;
 
 const Highlights = ({windowHeight,texts}) => {
-    const handleScrollCardBackAnimation = () => {
-        const cards = document.querySelectorAll('.card_parallaxBack');
+    useEffect(() => {
+        const handleScroll = () => {
+            const cards = document.querySelectorAll('.card_parallaxBack');
+            if (!cards.length) return;
 
-        if (!cards) return;
+            const viewportCenter = window.innerHeight / 2;
 
-        cards.forEach((card,index) => {
-            const top = card.getBoundingClientRect().top;
-            const height = card.clientHeight;
+            cards.forEach((card, i) => {
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.top + rect.height / 2;
+                const offset = (cardCenter - viewportCenter) / 2;
 
-            if (top-height > windowHeight) return;
+                card.style.backgroundPosition = `50% calc(50% + ${i === 0 ?Math.max(offset, -15) :offset}px)`;
+            });
+        };
 
-            const backPosition = height/200 * (top/(windowHeight/100));
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
 
-            index === 0 &&
-            console.log(backPosition)
-
-            if (index === 0)
-                card.style.backgroundPositionY = `${backPosition > 0 ?backPosition :0}px`;
-            else
-                card.style.backgroundPositionY = `${backPosition-height/3}px`;
-        });
-    };
-    window.addEventListener('scroll', handleScrollCardBackAnimation);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <HighlightsContent className='container'>
