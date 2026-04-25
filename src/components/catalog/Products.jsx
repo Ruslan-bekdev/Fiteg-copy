@@ -116,7 +116,6 @@ const ProductsContent = styled.div`
         .product__desc {
           transform: translateY(50%);
           transition: .2s ease-in-out;
-          pointer-events: none;
 
           .nutritionalInfo {
             transform: rotate(-9deg) translateY(-30%);
