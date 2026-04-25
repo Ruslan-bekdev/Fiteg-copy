@@ -1,9 +1,5 @@
 import React from 'react';
-import card4 from "../../assets/highlights/card4.png";
-import card4_cpap from "../../assets/highlights/card4-cpap.svg";
 import title2 from "../../assets/landing/title2.png";
-import card3 from "../../assets/highlights/card3.png";
-import card1 from "../../assets/highlights/card1.png";
 import styled from "styled-components";
 
 const CardsContent = styled.div`
@@ -89,13 +85,13 @@ const Cards = ({texts}) => {
             <div
                 className='card card_parallaxBack'
                 style={{
-                    backgroundImage: `url(${card4})`,
+                    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/highlights/card4.png)`,
                     backgroundColor: '#f3f4f5',
                     paddingBottom: `5rem`,
                 }}
             >
                 <img
-                    src={card4_cpap} alt=""
+                    src='/assets/highlights/card4-cpap.svg' alt=""
                     className='card4__img'
                 />
                 <h3>{texts[0].title}</h3>
@@ -118,7 +114,7 @@ const Cards = ({texts}) => {
             <div
                 className='card'
                 style={{
-                    backgroundImage: `url(${card3})`,
+                    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/highlights/card3.png)`,
                     backgroundColor: '#fac36c',
                 }}
             >
@@ -128,7 +124,7 @@ const Cards = ({texts}) => {
             <div
                 className='card card_parallaxBack'
                 style={{
-                    backgroundImage: `url(${card1})`,
+                    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/highlights/card1.png)`,
                     backgroundColor: '#a0cd5f',
                 }}
             >
